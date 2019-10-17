@@ -1,6 +1,6 @@
 <h1 align="center">Frogtoberfest Checker</h1>
 <p align="center">Web app to track your progress for Frogtoberfest.</p>
-<p align="center"><a href="https://frogtoberfest.lftechnology.com">https://frogtoberfest.lftechnology.com/</a></p>
+<p align="center">:point_right: <a href="https://frogtoberfest.lftechnology.com">https://frogtoberfest.lftechnology.com</a></p>
 
 ![Frogtoberfest Checker](frogtoberfest-checker.png)
 
@@ -10,32 +10,46 @@
 
 ## Requirements
 
-* Node v8+
-
-> Recommended to use [NVM](https://github.com/creationix/nvm)
+- Node v8+
 
 ## Running the App
 
-* [Generate a GitHub personal access token](https://github.com/settings/tokens/new?scopes=&description=Hacktoberfest%20Checker) to ensure you don't get rate limited as often.
+- [Generate a GitHub personal access token](https://github.com/settings/tokens/new?scopes=&description=Hacktoberfest%20Checker) to ensure you don't get rate limited as often.
 
-* Create a `.env` file using `.env.example`. Or export your GitHub token as `GITHUB_TOKEN` environment variable in your system:
-   * Mac/Linux: `export GITHUB_TOKEN=YOUR_TOKEN`
-   * Windows (cmd.exe): `set GITHUB_TOKEN=YOUR TOKEN`
-   * Windows (PowerShell): `$env:GITHUB_TOKEN=YOUR TOKEN`
+- Create a `.env` file using `.env.example`.
 
-* Install dependencies and run it.
+  ```bash
+  $ cp .env.example .env
+  ```
+
+- Alternatively, you can export your GitHub token as `GITHUB_TOKEN` environment variable in your system:
+
+  - **Mac/Linux**
+
+    ```bash
+    export GITHUB_TOKEN=YOUR_TOKEN
+    ```
+
+  - **Windows**
+
+    For command prompt:
+
+    ```
+    set GITHUB_TOKEN=YOUR TOKEN
+    ```
+
+    For PowerShell:
+
+    ```
+    $env:GITHUB_TOKEN=YOUR TOKEN
+    ```
+
+- Install dependencies and start.
+
   ```bash
   $ yarn
   $ yarn start
   ```
-
-* Open [http://localhost:5000](http://localhost:5000)
-
-Want to run the API server and the frontend in their own processes? Use this:
-```bash
-$ yarn start-frontend
-$ yarn start-server
-```
 
 ### Running the app within Docker
 
@@ -57,7 +71,5 @@ $ docker-compose up --build
 Redistributed and sub-licensed under [MIT License](LICENSE) © 2019 - present by [Leapfrog Technology](https://github.com/leapfrogtechnology).
 
 Originally distributed and licensed under [MIT License](https://github.com/jenkoian/hacktoberfest-checker/LICENSE) by [Ian Jenkins](https://github.com/jenkoian). Check the original source code [here](https://github.com/jenkoian/hacktoberfest-checker).
-
----
 
 Happy Hacking! 🎃 🐸
