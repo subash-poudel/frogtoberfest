@@ -1,20 +1,18 @@
-# Frogtoberfest Checker
+<h1 align="center">Frogtoberfest Checker</h1>
+<p align="center">Web app to track your progress for Frogtoberfest.</p>
+<p align="center">:point_right: <a href="https://frogtoberfest.lftechnology.com">https://frogtoberfest.lftechnology.com/</a></p>
+
+![Frogtoberfest Checker](frogtoberfest-checker.png)
+
+## CI Status
 
 [![CircleCI](https://circleci.com/gh/leapfrogtechnology/frogtoberfest/tree/master.svg?style=svg)](https://circleci.com/gh/leapfrogtechnology/frogtoberfest/tree/master)
-
-Web app to track your progress for Frogtoberfest.
-
-:point_right: [https://frogtoberfest.lftechnology.com/](https://frogtoberfest.lftechnology.com)
-
-Happy Hacking!
-
-![Screenshot](frogtoberfest-checker.png)
 
 ## Requirements
 
 - Node v8+
 
-## Running the app
+## Running the App
 
 - [Generate a GitHub personal access token](https://github.com/settings/tokens/new?scopes=&description=Hacktoberfest%20Checker) to ensure you don't get rate limited as often.
 
@@ -82,3 +80,5 @@ $ docker-compose up --build
 Redistributed and sub-licensed under [MIT License](LICENSE) © 2019 - present by [Leapfrog Technology](https://github.com/leapfrogtechnology).
 
 Originally distributed and licensed under [MIT License](https://github.com/jenkoian/hacktoberfest-checker/LICENSE) by [Ian Jenkins](https://github.com/jenkoian). Check the original source code [here](https://github.com/jenkoian/hacktoberfest-checker).
+
+Happy Hacking! 🎃 🐸
