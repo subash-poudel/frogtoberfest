@@ -22,7 +22,7 @@
   $ cp .env.example .env
   ```
 
-- Alternatively, you cann export your GitHub token as `GITHUB_TOKEN` environment variable in your system:
+- Alternatively, you can export your GitHub token as `GITHUB_TOKEN` environment variable in your system:
 
   - **Mac/Linux**
 
@@ -50,15 +50,6 @@
   $ yarn
   $ yarn start
   ```
-
-- Open [http://localhost:5000](http://localhost:5000)
-
-Want to run the API server and the frontend in their own processes? Use this:
-
-```bash
-$ yarn start-frontend
-$ yarn start-server
-```
 
 ### Running the app within Docker
 
