@@ -4,10 +4,7 @@
 
 Web app to track your progress for Frogtoberfest.
 
-Happy Hacking!
-
 [https://frogtoberfest.lftechnology.com/](https://frogtoberfest.lftechnology.com/)
-([https://frogtoberfest.lftechnology.com/](https://frogtoberfest.lftechnology.com/))
 
 ![Screenshot](frogtoberfest-checker.png)
 
@@ -57,7 +54,10 @@ $ docker-compose up --build
 
 ## License
 
-Redistributed and sub-licensed under [MIT License](LICENSE) © 2019 - present by [Leapfrog Technology](https://github.com/leapfrogtechnology).  
+Redistributed and sub-licensed under [MIT License](LICENSE) © 2019 - present by [Leapfrog Technology](https://github.com/leapfrogtechnology).
 
 Originally distributed and licensed under [MIT License](https://github.com/jenkoian/hacktoberfest-checker/LICENSE) by [Ian Jenkins](https://github.com/jenkoian). Check the original source code [here](https://github.com/jenkoian/hacktoberfest-checker).
 
+---
+
+Happy Hacking! 🎃 🐸
