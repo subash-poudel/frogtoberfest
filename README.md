@@ -1,12 +1,12 @@
-# Frogtoberfest Checker
+<h1 align="center">Frogtoberfest Checker</h1>
+<p align="center">Web app to track your progress for Frogtoberfest.</p>
+<p align="center"><a href="https://frogtoberfest.lftechnology.com">https://frogtoberfest.lftechnology.com/</a></p>
+
+![Frogtoberfest Checker](frogtoberfest-checker.png)
+
+## CI Status
 
 [![CircleCI](https://circleci.com/gh/leapfrogtechnology/frogtoberfest/tree/master.svg?style=svg)](https://circleci.com/gh/leapfrogtechnology/frogtoberfest/tree/master)
-
-Web app to track your progress for Frogtoberfest.
-
-[https://frogtoberfest.lftechnology.com/](https://frogtoberfest.lftechnology.com/)
-
-![Screenshot](frogtoberfest-checker.png)
 
 ## Requirements
 
@@ -14,7 +14,7 @@ Web app to track your progress for Frogtoberfest.
 
 > Recommended to use [NVM](https://github.com/creationix/nvm)
 
-## Running the app
+## Running the App
 
 * [Generate a GitHub personal access token](https://github.com/settings/tokens/new?scopes=&description=Hacktoberfest%20Checker) to ensure you don't get rate limited as often.
 
