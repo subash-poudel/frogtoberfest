@@ -1,11 +1,16 @@
 {
-  "name": "hacktoberfest-checker",
-  "version": "4.0.0",
-  "description": "Small app to see if you have fulfilled the requirements for a Hacktoberfest t-shirt",
+  "name": "frogtoberfest",
+  "version": "1.0.0",
+  "description": "Web app to track your progress for Frogtoberfest.",
   "main": "index.js",
-  "engines": {
-    "node": ">=8.0.0"
-  },
+  "private": true,
+  "author": "Ian Jenkins",
+  "license": "MIT",
+  "repository": "git@github.com:leapfrogtechnology/frogtoberfest.git",
+  "keywords": [
+    "hacktoberfest",
+    "frogtoberfest"
+  ],
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
@@ -17,11 +22,6 @@
     "prettier": "prettier \"{src,api}/**/*.js\"",
     "prettier-fix": "prettier --write \"{src,api}/**/*.js\""
   },
-  "keywords": [
-    "hacktoberfest"
-  ],
-  "author": "Ian Jenkins",
-  "license": "MIT",
   "dependencies": {
     "body-parser": "^1.15.1",
     "cors": "^2.8.4",
@@ -43,7 +43,9 @@
     "prettier": "^1.14.3",
     "tailwindcss": "^0.6.6"
   },
-  "repository": "git@github.com:jenkoian/hacktoberfest-checker.git",
+  "engines": {
+    "node": ">=8.0.0"
+  },
   "browserslist": [
     ">0.2%",
     "not dead",
