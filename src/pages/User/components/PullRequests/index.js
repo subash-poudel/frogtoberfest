@@ -9,6 +9,7 @@ import IssuesLink from './IssuesLink';
 import MeLinkInfo from './MeLinkInfo';
 import { GITHUB_TOKEN } from '../../../../config';
 import isPRLabelValid from '../../../../utils/isPRLabelValid';
+import { pullRequestAmount, otherReposAmount } from './pullRequestAmount';
 
 /**
  * Pull Requests component.
@@ -131,11 +132,11 @@ class PullRequests extends Component {
    * @returns {boolean}
    */
   conditionChecker(data) {
-    if (data.items.length < 10) {
+    if (data.items.length < pullRequestAmount) {
       return false;
     }
 
-    return this.state.otherReposCount >= 4;
+    return this.state.otherReposCount >= otherReposAmount;
   }
 
   /**
