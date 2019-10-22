@@ -30,6 +30,11 @@ class PullRequests extends Component {
     this.fetchPullRequests();
   };
 
+  /**
+   * Lifecycle event for component update.
+   *
+   * @param {*} prevProps
+   */
   componentDidUpdate = prevProps => {
     if (prevProps.username === this.props.username) {
       return;
@@ -37,6 +42,9 @@ class PullRequests extends Component {
     this.fetchPullRequests();
   };
 
+  /**
+   * Persist username in the local storage.
+   */
   storeUsernameAsMe = () => {
     const username = this.props.username;
 
@@ -47,6 +55,11 @@ class PullRequests extends Component {
     localStorage.setItem('myGithub', username);
   };
 
+  /**
+   * Fetch pull requests.
+   *
+   * @returns {Promise}
+   */
   fetchPullRequests = async () => {
     try {
       const username = this.props.username;
@@ -149,6 +162,9 @@ class PullRequests extends Component {
     return count;
   }
 
+  /**
+   * Render the component.
+   */
   render = () => {
     const username = this.props.username;
     const { loading, data, error, userDetail } = this.state;

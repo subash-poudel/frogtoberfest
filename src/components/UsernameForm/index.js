@@ -6,7 +6,7 @@ import UsernameInput from './UsernameInput';
 import CheckButton from './CheckButton';
 
 /**
- * Username Form Component.
+ * Username form component.
  */
 class UsernameForm extends Component {
   static propTypes = {
@@ -25,8 +25,20 @@ class UsernameForm extends Component {
     username: this.props.username
   };
 
-  handleUsernameChange = e => this.setState({ username: e.target.value });
+  /**
+   * Event handler for username change.
+   *
+   * @param {*} e
+   */
+  handleUsernameChange = e => {
+    this.setState({ username: e.target.value });
+  };
 
+  /**
+   * Event handler for form submission.
+   *
+   * @param {*} e
+   */
   handleSubmit = e => {
     e.preventDefault();
 
@@ -40,7 +52,16 @@ class UsernameForm extends Component {
     this.props.history.push(userUrl);
   };
 
-  getUserUrl = username => `/user/${username}`;
+  /**
+   * Get URL for the user by username.
+   *
+   * TODO: Extract this out of the component as a util function.
+   *
+   * @param {string} username
+   */
+  getUserUrl = username => {
+    return `/user/${username}`;
+  };
 
   render = () => (
     <div className="pb-4 md:pt-16">
