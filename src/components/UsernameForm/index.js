@@ -48,10 +48,7 @@ class UsernameForm extends Component {
         onSubmit={this.handleSubmit}
         style={formStyle}
       >
-        <UsernameInput
-          value={this.state.username}
-          onChange={this.handleUsernameChange}
-        />
+        <UsernameInput value={this.state.username} onChange={this.handleUsernameChange} />
         <CheckButton />
       </form>
     </div>

@@ -15,10 +15,7 @@ const PullRequest = ({ pullRequest }) => (
       pullRequest.has_hacktoberfest_label ? 'hacktoberfest' : ''
     }p-4 flex border-b border-grey break-words`}
   >
-    <MergeStatus
-      open={pullRequest.state === ISSUE_STATUS.OPEN}
-      merged={pullRequest.state === ISSUE_STATUS.CLOSED}
-    />
+    <MergeStatus open={pullRequest.state === ISSUE_STATUS.OPEN} merged={pullRequest.state === ISSUE_STATUS.CLOSED} />
     <PullRequestInfo pullRequest={pullRequest} />
   </div>
 );

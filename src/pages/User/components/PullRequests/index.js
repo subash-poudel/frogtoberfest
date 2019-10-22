@@ -141,10 +141,7 @@ export default class PullRequests extends Component {
     return (
       <Fragment>
         <div className="text-center text-white">
-          <ShareButtons
-            username={username}
-            pullRequestCount={data.items.length}
-          />
+          <ShareButtons username={username} pullRequestCount={data.items.length} />
           <UserInfo
             username={username}
             userImage={userDetail.items[0].avatar_url}
@@ -154,9 +151,7 @@ export default class PullRequests extends Component {
         </div>
         <div className="rounded mx-auto shadow overflow-hidden w-5/6 lg:w-1/2 mb-4">
           {data.items.length > 0 &&
-            data.items.map((pullRequest, i) => (
-              <PullRequest pullRequest={pullRequest} key={i} />
-            ))}
+            data.items.map((pullRequest, i) => <PullRequest pullRequest={pullRequest} key={i} />)}
         </div>
         {!isComplete && <IssuesLink />}
         <MeLinkInfo username={username} />

@@ -5,17 +5,11 @@ import dateFormatter from '../../../../../utils/dateFormater';
 const PullRequestInfo = ({ pullRequest }) => (
   <div>
     <div className="text-grey-darker">
-      <a
-        className="text-grey-darker font-semibold link no-underline hover:underline"
-        href={pullRequest.user.html_url}
-      >
+      <a className="text-grey-darker font-semibold link no-underline hover:underline" href={pullRequest.user.html_url}>
         {pullRequest.user.login}
       </a>{' '}
       submitted a pull request{' '}
-      <a
-        className="text-blue-dark link no-underline hover:underline"
-        href={pullRequest.html_url}
-      >
+      <a className="text-blue-dark link no-underline hover:underline" href={pullRequest.html_url}>
         {pullRequest.repository_url.split('repos/')[1]}#{pullRequest.number}
       </a>
     </div>
