@@ -137,7 +137,7 @@ export default class PullRequests extends Component {
       if (pullRequest.labels.length) {
         let validFlag = true;
         pullRequest.labels.forEach((label, index) => {
-          if (label.name === "invalid") {
+          if (label.name === 'invalid') {
             validFlag = false;
             return;
           }
