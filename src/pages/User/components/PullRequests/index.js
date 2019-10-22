@@ -71,7 +71,7 @@ export default class PullRequests extends Component {
       const [data, userDetail] = await Promise.all(allResponses);
       const count = this.counterOtherRepos(data, userDetail);
       this.setState({
-        data: getValidPullRequest(data),
+        data: this.getValidPullRequest(data),
         userDetail,
         loading: false,
         otherReposCount: count,
