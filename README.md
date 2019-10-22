@@ -34,8 +34,8 @@
 As an alternative to the section above, you can run the app within a Docker container:
 
 ```bash
-$ docker build -t frogtoberfest .
-$ docker run -p 5000:5000 -e "REACT_APP_GITHUB_TOKEN=YOUR_TOKEN" frogtoberfest
+$ docker build -t frogtoberfest-checker .
+$ docker run -p 5000:5000 -e "REACT_APP_GITHUB_TOKEN=YOUR_TOKEN" frogtoberfest-checker
 ```
 
 Alternatively, you can use docker-compose.
