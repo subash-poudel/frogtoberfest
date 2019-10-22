@@ -98,7 +98,7 @@ export default class PullRequests extends Component {
       return data.errors.message;
     }
 
-    return "Couldn't find any data or we hit an error, err try again?";
+    return "Couldn't find any data or we hit an error, try again?";
   };
 
   conditionChecker(data, userDetail) {
