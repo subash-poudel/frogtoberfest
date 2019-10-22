@@ -125,10 +125,9 @@ class PullRequests extends Component {
    * Check the condition for eligibility.
    *
    * @param {*} data
-   * @param {*} userDetail
    * @returns {boolean}
    */
-  conditionChecker(data, userDetail) {
+  conditionChecker(data) {
     if (data.items.length < 10) {
       return false;
     }
@@ -147,7 +146,7 @@ class PullRequests extends Component {
     const user = userDetail.items[0].login;
     let count = 0;
 
-    data.items.forEach((pullRequest, index) => {
+    data.items.forEach(pullRequest => {
       const repoOwner = pullRequest.repository_url
         .split('/repos/')
         .pop()
