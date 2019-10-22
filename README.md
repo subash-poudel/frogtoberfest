@@ -12,7 +12,7 @@
 
 ## Running the App
 
-- [Generate a GitHub personal access token](https://github.com/settings/tokens/new?scopes=&description=Hacktoberfest%20Checker) to ensure you don't get rate limited as often.
+- [Generate a GitHub personal access token](https://github.com/settings/tokens/new?scopes=&description=Frogtoberfest) to ensure you don't get rate limited as often.
 
 - Create a `.env` file using `.env.example`.
 
@@ -54,8 +54,8 @@
 As an alternative to the section above, you can run the app within a Docker container:
 
 ```bash
-$ docker build -t hacktoberfest-checker .
-$ docker run -p 5000:5000 -e "GITHUB_TOKEN=YOUR_TOKEN" hacktoberfest-checker
+$ docker build -t frogtoberfest .
+$ docker run -p 5000:5000 -e "GITHUB_TOKEN=YOUR_TOKEN" frogtoberfest
 ```
 
 Alternatively, you can use docker-compose.
