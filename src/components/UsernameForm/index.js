@@ -5,6 +5,9 @@ import TimeMessage from './TimeMessage';
 import UsernameInput from './UsernameInput';
 import CheckButton from './CheckButton';
 
+/**
+ * Username Form Component.
+ */
 class UsernameForm extends Component {
   static propTypes = {
     username: PropTypes.string,

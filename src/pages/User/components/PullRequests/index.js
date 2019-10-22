@@ -9,7 +9,10 @@ import IssuesLink from './IssuesLink';
 import MeLinkInfo from './MeLinkInfo';
 import { GITHUB_TOKEN } from '../../../../config';
 
-export default class PullRequests extends Component {
+/**
+ * Pull Requests component.
+ */
+class PullRequests extends Component {
   static defaultProps = {
     username: PropTypes.string.isRequired
   };
@@ -105,6 +108,13 @@ export default class PullRequests extends Component {
     return "Couldn't find any data or we hit an error, try again?";
   };
 
+  /**
+   * Check the condition for eligibility.
+   *
+   * @param {*} data
+   * @param {*} userDetail
+   * @returns {boolean}
+   */
   conditionChecker(data, userDetail) {
     if (data.items.length < 10) {
       return false;
@@ -113,6 +123,13 @@ export default class PullRequests extends Component {
     return this.state.otherReposCount >= 4;
   }
 
+  /**
+   * Count other repositories.
+   *
+   * @param {*} data
+   * @param {*} userDetail
+   * @returns {number}
+   */
   counterOtherRepos(data, userDetail) {
     const user = userDetail.items[0].login;
     let count = 0;
@@ -166,3 +183,5 @@ export default class PullRequests extends Component {
     );
   };
 }
+
+export default PullRequests;

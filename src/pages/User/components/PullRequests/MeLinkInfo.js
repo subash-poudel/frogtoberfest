@@ -2,7 +2,10 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { HOSTNAME } from '../../../../config';
 
-export default class MeLinkInfo extends Component {
+/**
+ * "Me" link info component.
+ */
+class MeLinkInfo extends Component {
   static propTypes = {
     username: PropTypes.string.isRequired
   };
@@ -33,3 +36,5 @@ export default class MeLinkInfo extends Component {
 const buttonStyle = {
   border: '2px solid #12336f'
 };
+
+export default MeLinkInfo;
