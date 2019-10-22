@@ -199,4 +199,8 @@ class PullRequests extends Component {
   };
 }
 
+PullRequests.propTypes = {
+  username: PropTypes.string
+};
+
 export default PullRequests;

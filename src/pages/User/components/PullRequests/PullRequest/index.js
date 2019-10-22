@@ -25,6 +25,8 @@ PullRequest.propTypes = {
     number: PropTypes.number.isRequired,
     title: PropTypes.string.isRequired,
     created_at: PropTypes.string.isRequired,
+    state: PropTypes.string.isRequired,
+    has_hacktoberfest_label: PropTypes.bool.isRequired,
     user: PropTypes.shape({
       login: PropTypes.string.isRequired,
       url: PropTypes.string.isRequired

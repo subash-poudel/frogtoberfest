@@ -36,7 +36,8 @@ const completeMark = {
 UserInfo.propTypes = {
   username: PropTypes.string.isRequired,
   userImage: PropTypes.string.isRequired,
-  pullRequestCount: PropTypes.number.isRequired
+  pullRequestCount: PropTypes.number.isRequired,
+  otherReposCount: PropTypes.number.isRequired
 };
 
 export default UserInfo;

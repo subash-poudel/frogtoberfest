@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-// import pullRequestAmount from '../pullRequestAmount';
 
 const PullRequestCount = ({ pullRequestCount, pullRequestAmount }) => (
   <span className="block rounded text-5xl font-medium white w-64">
@@ -9,7 +8,8 @@ const PullRequestCount = ({ pullRequestCount, pullRequestAmount }) => (
 );
 
 PullRequestCount.propTypes = {
-  pullRequestCount: PropTypes.number.isRequired
+  pullRequestCount: PropTypes.number.isRequired,
+  pullRequestAmount: PropTypes.number.isRequired
 };
 
 export default PullRequestCount;

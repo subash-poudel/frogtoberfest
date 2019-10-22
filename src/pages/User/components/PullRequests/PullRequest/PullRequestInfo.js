@@ -23,10 +23,13 @@ PullRequestInfo.propTypes = {
   pullRequest: PropTypes.shape({
     number: PropTypes.number.isRequired,
     title: PropTypes.string.isRequired,
+    html_url: PropTypes.string.isRequired,
+    repository_url: PropTypes.string.isRequired,
     created_at: PropTypes.string.isRequired,
     user: PropTypes.shape({
       login: PropTypes.string.isRequired,
-      url: PropTypes.string.isRequired
+      url: PropTypes.string.isRequired,
+      html_url: PropTypes.string.isRequired
     }).isRequired
   })
 };
