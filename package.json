@@ -17,21 +17,27 @@
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
     "tailwind-gen": "node ./node_modules/tailwindcss/lib/cli.js build ./tailwind-gen.css -c ./tailwind.js -o ./src/tailwind.css",
-    "eslint": "yarn prettier",
-    "eslint-fix": "yarn prettier-fix",
+    "eslint": "eslint src",
+    "eslint:fix": "eslint --fix src",
+    "lint": "yarn prettier && yarn eslint",
+    "lint:fix": "yarn prettier:fix && yarn eslint:fix",
     "prettier": "prettier \"{src,api}/**/*.js\"",
-    "prettier-fix": "prettier --write \"{src,api}/**/*.js\""
+    "prettier:fix": "prettier --write \"{src,api}/**/*.js\""
   },
   "dependencies": {
     "prop-types": "^15.6.2",
     "react": "^16.5.2",
     "react-dom": "^16.5.2",
     "react-helmet": "^5.2.0",
-    "react-router-dom": "^4.3.1",
-    "react-scripts": "^2.0.5"
+    "react-router-dom": "^4.3.1"
   },
   "devDependencies": {
+    "babel-eslint": "9.0.0",
+    "eslint": "5.12.0",
+    "eslint-config-leapfrog": "^2.0.1",
+    "eslint-plugin-react": "^7.16.0",
     "prettier": "^1.14.3",
+    "react-scripts": "^2.0.5",
     "tailwindcss": "^0.6.6"
   },
   "engines": {

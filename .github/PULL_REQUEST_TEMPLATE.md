@@ -1,4 +1,4 @@
-Have any questions? Read [CONTRIBUTING.md](https://github.com/leapfrogtechnology/frogtoberfest/blob/master/CONTRIBUTING.md)
+<!-- Have any questions? Read [CONTRIBUTING.md](https://github.com/leapfrogtechnology/frogtoberfest/blob/master/CONTRIBUTING.md) -->
 
 ## Issue
 

@@ -2,11 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const UserImage = ({ userImage, username }) => (
-  <a
-    href={`https://github.com/${username}`}
-    target="_blank"
-    rel="noopener noreferrer"
-  >
+  <a href={`https://github.com/${username}`} target="_blank" rel="noopener noreferrer">
     <img
       id="userImage"
       alt={`GitHub user: ${username}`}

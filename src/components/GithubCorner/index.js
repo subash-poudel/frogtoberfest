@@ -1,9 +1,10 @@
 import React from 'react';
+
 import './GithubCorner.css';
 
 const GithubCorner = () => (
   <a
-    href="https://github.com/leapfrogtechnology/hacktoberfest-checker"
+    href="https://github.com/leapfrogtechnology/frogtoberfest"
     className="github-corner"
     aria-label="Fork me on Github"
     target="_blank"

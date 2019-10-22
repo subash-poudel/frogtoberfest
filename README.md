@@ -12,7 +12,7 @@
 
 ## Running the App
 
-- [Generate a GitHub personal access token](https://github.com/settings/tokens/new?scopes=&description=Hacktoberfest%20Checker) to ensure you don't get rate limited as often.
+- [Generate a GitHub personal access token](https://github.com/settings/tokens/new?scopes=&description=Frogtoberfest) to ensure you don't get rate limited as often.
 
 - Create a `.env` file using `.env.example`.
 
@@ -20,27 +20,7 @@
   $ cp .env.example .env
   ```
 
-- Alternatively, you can export your GitHub token as `GITHUB_TOKEN` environment variable in your system:
-
-  - **Mac/Linux**
-
-    ```bash
-    export GITHUB_TOKEN=YOUR_TOKEN
-    ```
-
-  - **Windows**
-
-    For command prompt:
-
-    ```
-    set GITHUB_TOKEN=YOUR TOKEN
-    ```
-
-    For PowerShell:
-
-    ```
-    $env:GITHUB_TOKEN=YOUR TOKEN
-    ```
+- Set your GitHub token as `REACT_APP_GITHUB_TOKEN` environment variable in `.env`:
 
 - Install dependencies and start.
 
@@ -54,8 +34,8 @@
 As an alternative to the section above, you can run the app within a Docker container:
 
 ```bash
-$ docker build -t hacktoberfest-checker .
-$ docker run -p 5000:5000 -e "GITHUB_TOKEN=YOUR_TOKEN" hacktoberfest-checker
+$ docker build -t frogtoberfest-checker .
+$ docker run -p 5000:5000 -e "REACT_APP_GITHUB_TOKEN=YOUR_TOKEN" frogtoberfest-checker
 ```
 
 Alternatively, you can use docker-compose.

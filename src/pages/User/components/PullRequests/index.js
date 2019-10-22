@@ -9,7 +9,10 @@ import IssuesLink from './IssuesLink';
 import MeLinkInfo from './MeLinkInfo';
 import { GITHUB_TOKEN } from '../../../../config';
 
-export default class PullRequests extends Component {
+/**
+ * Pull Requests component.
+ */
+class PullRequests extends Component {
   static defaultProps = {
     username: PropTypes.string.isRequired
   };
@@ -27,11 +30,21 @@ export default class PullRequests extends Component {
     this.fetchPullRequests();
   };
 
+  /**
+   * Lifecycle event for component update.
+   *
+   * @param {*} prevProps
+   */
   componentDidUpdate = prevProps => {
-    if (prevProps.username === this.props.username) return;
+    if (prevProps.username === this.props.username) {
+      return;
+    }
     this.fetchPullRequests();
   };
 
+  /**
+   * Persist username in the local storage.
+   */
   storeUsernameAsMe = () => {
     const username = this.props.username;
 
@@ -42,6 +55,11 @@ export default class PullRequests extends Component {
     localStorage.setItem('myGithub', username);
   };
 
+  /**
+   * Fetch pull requests.
+   *
+   * @returns {Promise}
+   */
   fetchPullRequests = async () => {
     try {
       const username = this.props.username;
@@ -49,6 +67,7 @@ export default class PullRequests extends Component {
         `https://api.github.com/search/issues?q=author:${username}+is:pr+created:2019-10-01..2019-10-31`,
         `https://api.github.com/search/users?q=user:${username}`
       ];
+
       this.setState({
         loading: true
       });
@@ -70,6 +89,7 @@ export default class PullRequests extends Component {
 
       const [data, userDetail] = await Promise.all(allResponses);
       const count = this.counterOtherRepos(data, userDetail);
+
       this.setState({
         data: this.getValidPullRequests(data),
         userDetail,
@@ -101,23 +121,38 @@ export default class PullRequests extends Component {
     return "Couldn't find any data or we hit an error, try again?";
   };
 
-  conditionChecker(data, userDetail) {
+  /**
+   * Check the condition for eligibility.
+   *
+   * @param {*} data
+   * @returns {boolean}
+   */
+  conditionChecker(data) {
     if (data.items.length < 10) {
       return false;
     }
+
     return this.state.otherReposCount >= 4;
   }
 
+  /**
+   * Count other repositories.
+   *
+   * @param {*} data
+   * @param {*} userDetail
+   * @returns {number}
+   */
   counterOtherRepos(data, userDetail) {
     const user = userDetail.items[0].login;
     let count = 0;
 
-    data.items.forEach((pullRequest, index) => {
+    data.items.forEach(pullRequest => {
       const repoOwner = pullRequest.repository_url
         .split('/repos/')
         .pop()
         .split('/')
         .shift();
+
       if (repoOwner !== user) {
         count++;
       }
@@ -136,15 +171,19 @@ export default class PullRequests extends Component {
 
       const isValid = pullRequest.labels.filter(({ name }) => name.toLowerCase() === 'invalid').length === 0;
       if (isValid) {
-        validPullRequest.push(pullRequest)
+        validPullRequest.push(pullRequest);
       }
     });
-    return { ...data, total_count: validPullRequest.length, items: validPullRequest }
+    return { ...data, total_count: validPullRequest.length, items: validPullRequest };
   }
 
+  /**
+   * Render the component.
+   */
   render = () => {
     const username = this.props.username;
     const { loading, data, error, userDetail } = this.state;
+
     if (loading) {
       return <LoadingIcon />;
     }
@@ -157,10 +196,7 @@ export default class PullRequests extends Component {
     return (
       <Fragment>
         <div className="text-center text-white">
-          <ShareButtons
-            username={username}
-            pullRequestCount={data.items.length}
-          />
+          <ShareButtons username={username} pullRequestCount={data.items.length} />
           <UserInfo
             username={username}
             userImage={userDetail.items[0].avatar_url}
@@ -170,9 +206,7 @@ export default class PullRequests extends Component {
         </div>
         <div className="rounded mx-auto shadow overflow-hidden w-5/6 lg:w-1/2 mb-4">
           {data.items.length > 0 &&
-            data.items.map((pullRequest, i) => (
-              <PullRequest pullRequest={pullRequest} key={i} />
-            ))}
+            data.items.map((pullRequest, i) => <PullRequest pullRequest={pullRequest} key={i} />)}
         </div>
         {!isComplete && <IssuesLink />}
         <MeLinkInfo username={username} />
@@ -180,3 +214,9 @@ export default class PullRequests extends Component {
     );
   };
 }
+
+PullRequests.propTypes = {
+  username: PropTypes.string
+};
+
+export default PullRequests;
