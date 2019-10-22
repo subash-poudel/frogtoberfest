@@ -19,17 +19,18 @@ const PullRequestInfo = ({ pullRequest }) => (
   </div>
 );
 
+// TODO: Convert to camelCase and enable camelcase rule.
 PullRequestInfo.propTypes = {
   pullRequest: PropTypes.shape({
     number: PropTypes.number.isRequired,
     title: PropTypes.string.isRequired,
-    html_url: PropTypes.string.isRequired,
-    repository_url: PropTypes.string.isRequired,
-    created_at: PropTypes.string.isRequired,
+    html_url: PropTypes.string.isRequired, // eslint-disable-line camelcase
+    repository_url: PropTypes.string.isRequired, // eslint-disable-line camelcase
+    created_at: PropTypes.string.isRequired, // eslint-disable-line camelcase
     user: PropTypes.shape({
       login: PropTypes.string.isRequired,
       url: PropTypes.string.isRequired,
-      html_url: PropTypes.string.isRequired
+      html_url: PropTypes.string.isRequired // eslint-disable-line camelcase
     }).isRequired
   })
 };
