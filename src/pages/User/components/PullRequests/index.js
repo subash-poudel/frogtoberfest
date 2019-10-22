@@ -28,7 +28,9 @@ export default class PullRequests extends Component {
   };
 
   componentDidUpdate = prevProps => {
-    if (prevProps.username === this.props.username) return;
+    if (prevProps.username === this.props.username) {
+      return;
+    }
     this.fetchPullRequests();
   };
 
@@ -49,6 +51,7 @@ export default class PullRequests extends Component {
         `https://api.github.com/search/issues?q=author:${username}+is:pr+created:2019-10-01..2019-10-31`,
         `https://api.github.com/search/users?q=user:${username}`
       ];
+
       this.setState({
         loading: true
       });
@@ -70,6 +73,7 @@ export default class PullRequests extends Component {
 
       const [data, userDetail] = await Promise.all(allResponses);
       const count = this.counterOtherRepos(data, userDetail);
+
       this.setState({
         data,
         userDetail,
@@ -105,6 +109,7 @@ export default class PullRequests extends Component {
     if (data.items.length < 10) {
       return false;
     }
+
     return this.state.otherReposCount >= 4;
   }
 
@@ -118,6 +123,7 @@ export default class PullRequests extends Component {
         .pop()
         .split('/')
         .shift();
+
       if (repoOwner !== user) {
         count++;
       }
@@ -129,6 +135,7 @@ export default class PullRequests extends Component {
   render = () => {
     const username = this.props.username;
     const { loading, data, error, userDetail } = this.state;
+
     if (loading) {
       return <LoadingIcon />;
     }

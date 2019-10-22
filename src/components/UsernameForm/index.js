@@ -33,6 +33,7 @@ class UsernameForm extends Component {
       return;
     }
     const userUrl = this.getUserUrl(username);
+
     this.props.history.push(userUrl);
   };
 
