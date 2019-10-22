@@ -1,5 +1,6 @@
 import React from 'react';
-import presentedByLogo from '../assets/images/presented by logo lockup 1x.png';
+
+import presentedByLogo from '../assets/images/leapfrog-open-source-logo-1x.png';
 
 const Footer = () => (
   <footer
@@ -7,7 +8,8 @@ const Footer = () => (
     style={footerStyle}
   >
     <a href="https://github.com/leapfrogtechnology/opensource">
-      <img src={presentedByLogo} alt='Leapfrog Opensource Logo'></img></a>
+      <img src={presentedByLogo} alt="Leapfrog Open Source Logo"></img>
+    </a>
   </footer>
 );
 
