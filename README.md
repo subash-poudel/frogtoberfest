@@ -20,27 +20,7 @@
   $ cp .env.example .env
   ```
 
-- Alternatively, you can export your GitHub token as `GITHUB_TOKEN` environment variable in your system:
-
-  - **Mac/Linux**
-
-    ```bash
-    export GITHUB_TOKEN=YOUR_TOKEN
-    ```
-
-  - **Windows**
-
-    For command prompt:
-
-    ```
-    set GITHUB_TOKEN=YOUR TOKEN
-    ```
-
-    For PowerShell:
-
-    ```
-    $env:GITHUB_TOKEN=YOUR TOKEN
-    ```
+- Set your GitHub token as `REACT_APP_GITHUB_TOKEN` environment variable in `.env`:
 
 - Install dependencies and start.
 
@@ -55,7 +35,7 @@ As an alternative to the section above, you can run the app within a Docker cont
 
 ```bash
 $ docker build -t frogtoberfest .
-$ docker run -p 5000:5000 -e "GITHUB_TOKEN=YOUR_TOKEN" frogtoberfest
+$ docker run -p 5000:5000 -e "REACT_APP_GITHUB_TOKEN=YOUR_TOKEN" frogtoberfest
 ```
 
 Alternatively, you can use docker-compose.
