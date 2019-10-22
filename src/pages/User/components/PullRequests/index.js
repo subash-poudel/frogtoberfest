@@ -164,7 +164,7 @@ class PullRequests extends Component {
   /**
    *
    * @param {*} data
-   * @returns ValidPullRequests.
+   * @returns validPullRequests.
    */
   getValidPullRequests(data) {
     const validPullRequests = data.items.filter(pr => {
