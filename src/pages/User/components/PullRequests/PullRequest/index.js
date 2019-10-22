@@ -10,11 +10,7 @@ const ISSUE_STATUS = {
 };
 
 const PullRequest = ({ pullRequest }) => (
-  <div
-    className={`bg-white leading-normal ${
-      pullRequest.has_hacktoberfest_label ? 'hacktoberfest' : ''
-    }p-4 flex border-b border-grey break-words`}
-  >
+  <div className={`bg-white leading-normal p-4 flex border-b border-grey break-words`}>
     <MergeStatus open={pullRequest.state === ISSUE_STATUS.OPEN} merged={pullRequest.state === ISSUE_STATUS.CLOSED} />
     <PullRequestInfo pullRequest={pullRequest} />
   </div>
@@ -27,7 +23,6 @@ PullRequest.propTypes = {
     title: PropTypes.string.isRequired,
     created_at: PropTypes.string.isRequired, // eslint-disable-line camelcase
     state: PropTypes.string.isRequired,
-    has_hacktoberfest_label: PropTypes.bool.isRequired, // eslint-disable-line camelcase
     user: PropTypes.shape({
       login: PropTypes.string.isRequired,
       url: PropTypes.string.isRequired
