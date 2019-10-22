@@ -17,10 +17,12 @@
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
     "tailwind-gen": "node ./node_modules/tailwindcss/lib/cli.js build ./tailwind-gen.css -c ./tailwind.js -o ./src/tailwind.css",
-    "eslint": "yarn prettier",
-    "eslint-fix": "yarn prettier-fix",
+    "eslint": "eslint src index.js",
+    "eslint:fix": "eslint --fix src index.js",
+    "lint": "yarn prettier && yarn eslint",
+    "lint:fix": "yarn prettier:fix && yarn eslint:fix",
     "prettier": "prettier \"{src,api}/**/*.js\"",
-    "prettier-fix": "prettier --write \"{src,api}/**/*.js\""
+    "prettier:fix": "prettier --write \"{src,api}/**/*.js\""
   },
   "dependencies": {
     "prop-types": "^15.6.2",
