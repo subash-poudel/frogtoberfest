@@ -131,6 +131,7 @@ export default class PullRequests extends Component {
     data.items.forEach((pullRequest, index) => {
       if (!pullRequest.labels.length) {
         validPullRequest = [...validPullRequest, pullRequest]
+        return;
       }
 
       if (pullRequest.labels.length) {
