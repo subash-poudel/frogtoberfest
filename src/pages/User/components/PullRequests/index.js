@@ -71,7 +71,7 @@ export default class PullRequests extends Component {
       const [data, userDetail] = await Promise.all(allResponses);
       const count = this.counterOtherRepos(data, userDetail);
       this.setState({
-        data: this.getValidPullRequest(data),
+        data: this.getValidPullRequests(data),
         userDetail,
         loading: false,
         otherReposCount: count,
@@ -126,21 +126,16 @@ export default class PullRequests extends Component {
     return count;
   }
 
-  getValidPullRequest(data) {
+  getValidPullRequests(data) {
     let validPullRequest = [];
     data.items.forEach((pullRequest, index) => {
       if (!pullRequest.labels.length) {
         validPullRequest.push(pullRequest);
         return;
       }
-      let validFlag = true;
-      pullRequest.labels.forEach((label, index) => {
-        if (label.name === 'invalid') {
-          validFlag = false;
-          return;
-        }
-      });
-      if (validFlag) {
+
+      const isValid = pullRequest.labels.filter(({ name }) => name.toLowerCase() === 'invalid').length === 0;
+      if (isValid) {
         validPullRequest.push(pullRequest)
       }
     });
