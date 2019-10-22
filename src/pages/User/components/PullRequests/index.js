@@ -130,21 +130,18 @@ export default class PullRequests extends Component {
     let validPullRequest = [];
     data.items.forEach((pullRequest, index) => {
       if (!pullRequest.labels.length) {
-        validPullRequest = [...validPullRequest, pullRequest]
+        validPullRequest.push(pullRequest);
         return;
       }
-
-      if (pullRequest.labels.length) {
-        let validFlag = true;
-        pullRequest.labels.forEach((label, index) => {
-          if (label.name === 'invalid') {
-            validFlag = false;
-            return;
-          }
-        });
-        if (validFlag) {
-          validPullRequest = [...validPullRequest, pullRequest]
+      let validFlag = true;
+      pullRequest.labels.forEach((label, index) => {
+        if (label.name === 'invalid') {
+          validFlag = false;
+          return;
         }
+      });
+      if (validFlag) {
+        validPullRequest.push(pullRequest)
       }
     });
     return { ...data, total_count: validPullRequest.length, items: validPullRequest }
