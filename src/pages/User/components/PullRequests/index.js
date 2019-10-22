@@ -161,20 +161,20 @@ class PullRequests extends Component {
     return count;
   }
 
+  /**
+   *
+   * @param {*} data
+   * @returns ValidPullRequests.
+   */
   getValidPullRequests(data) {
-    let validPullRequest = [];
-    data.items.forEach((pullRequest, index) => {
-      if (!pullRequest.labels.length) {
-        validPullRequest.push(pullRequest);
-        return;
-      }
+    const validPullRequests = data.items.filter(pr => {
+      const hasInvalidLabel = ({ name }) => name.toLowerCase() === 'invalid';
+      const isPullRequestValid = pr.labels.filter(hasInvalidLabel).length === 0;
 
-      const isValid = pullRequest.labels.filter(({ name }) => name.toLowerCase() === 'invalid').length === 0;
-      if (isValid) {
-        validPullRequest.push(pullRequest);
-      }
+      return isPullRequestValid;
     });
-    return { ...data, total_count: validPullRequest.length, items: validPullRequest };
+
+    return { ...data, totalCount: validPullRequests.length, items: validPullRequests };
   }
 
   /**
