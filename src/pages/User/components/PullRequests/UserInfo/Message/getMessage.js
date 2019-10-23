@@ -19,9 +19,9 @@ const messages = [
  *
  * @param {*} pullRequestCount
  * @param {*} otherReposCount
- * @returns
+ * @returns {string}
  */
-const getMessage = (pullRequestCount, otherReposCount) => {
+function getMessage(pullRequestCount, otherReposCount) {
   const currentMonth = new Date().getMonth();
 
   if (currentMonth < 9) {
@@ -39,6 +39,6 @@ const getMessage = (pullRequestCount, otherReposCount) => {
   }
 
   return messages[pullRequestCount];
-};
+}
 
 export default getMessage;

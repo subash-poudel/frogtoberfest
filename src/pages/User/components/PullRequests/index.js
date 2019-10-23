@@ -8,7 +8,7 @@ import PullRequest from './PullRequest';
 import IssuesLink from './IssuesLink';
 import MeLinkInfo from './MeLinkInfo';
 import { GITHUB_TOKEN } from '../../../../config';
-import isPRLabelValid from '../../../../utils/isPRLabelValid';
+import { isPRLabelValid } from '../../../../utils/pullRequest';
 import { pullRequestAmount, otherReposAmount } from './pullRequestAmount';
 
 /**

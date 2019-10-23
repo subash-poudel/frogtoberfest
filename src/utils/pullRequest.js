@@ -9,7 +9,7 @@ const labelIgnoreRegex = new RegExp(FROGTOBERFEST_IGNORE_LABEL_LIST.join('|'), '
  *
  * @param {*} labels
  */
-export default function isPRLabelValid(labels) {
+export function isPRLabelValid(labels) {
   const result = labels.map(label => {
     // returns false if label has name in frogtoberfest label list
     return !labelIgnoreRegex.test(label.name);
