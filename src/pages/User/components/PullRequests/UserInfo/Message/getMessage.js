@@ -3,13 +3,13 @@ import { pullRequestAmount, otherReposAmount } from '../../pullRequestAmount';
 const messages = [
   "It's not too late to start!",
   'Off to a great start, keep going!',
-  'Off to a great start, keep going!',
+  'Keep going!',
   'Keep it up!',
-  'Keep it up!',
+  'Nice work, Keep it up !',
   "Nice! Now, don't stop!",
-  "Nice! Now, don't stop!",
+  "Keep Going, don't stop!",
   'So close!',
-  'So close!',
+  'So close! Keep it up !',
   'Way to go!',
   "Now you're just showing off!"
 ];
