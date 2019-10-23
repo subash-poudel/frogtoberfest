@@ -162,9 +162,10 @@ class PullRequests extends Component {
   }
 
   /**
+   * Validates and returns an object containing valid pull requests.
    *
    * @param {*} data
-   * @returns ValidPullRequests.
+   * @returns {*}
    */
   getValidPullRequests(data) {
     const validPullRequests = data.items.filter(pr => {
