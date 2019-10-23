@@ -8,6 +8,33 @@ import PullRequest from './PullRequest';
 import IssuesLink from './IssuesLink';
 import MeLinkInfo from './MeLinkInfo';
 import { GITHUB_TOKEN } from '../../../../config';
+import NotAMember from '../Modal/NotAMember';
+
+const GITHUB_ORG_NAME = 'leapfrogtechnology';
+
+export async function fetchUserInfo(username) {
+  const apiUrl = [
+    `https://api.github.com/search/issues?q=author:${username}+is:pr+created:2019-10-01..2019-10-31`,
+    `https://api.github.com/search/users?q=user:${username}`,
+    `https://api.github.com/orgs/${GITHUB_ORG_NAME}/members/${username}`
+  ];
+
+  const allResponses = apiUrl.map(url =>
+    fetch(url, {
+      headers: {
+        Authorization: `token ${GITHUB_TOKEN}`
+      }
+    })
+      .then(response => response)
+      .catch(error => error)
+  );
+  let [data, userDetail, membershipStatus] = await Promise.all(allResponses);
+  data = await data.json();
+  userDetail = await userDetail.json();
+  const isOrgMember = membershipStatus.status === 204;
+
+  return { data, userDetail, isOrgMember };
+}
 
 /**
  * Pull Requests component.
