@@ -90,46 +90,25 @@ class PullRequests extends Component {
   fetchPullRequests = async () => {
     try {
       const username = this.props.username;
-      const apiUrl = [
-        `https://api.github.com/search/issues?q=author:${username}+is:pr+created:2019-10-01..2019-10-31`,
-        `https://api.github.com/search/users?q=user:${username}`,
-        `https://api.github.com/orgs/leapfrogtechnology/members/${username}`
-      ];
-
-      this.setState({
-        loading: true
-      });
-
-      const allResponses = apiUrl.map(url =>
-        fetch(url, {
-          headers: {
-            Authorization: `token ${GITHUB_TOKEN}`
-          }
-        })
-          .then(response => response.json())
-          .catch(error =>
-            this.setState({
-              loading: false,
-              error
-            })
-          )
-      );
-
-      const [data, userDetail, lFMembershipStatus] = await Promise.all(allResponses);
+      const { data, userDetail, isOrgMember } = await fetchUserInfo(username);
       const count = this.counterOtherRepos(data, userDetail);
 
-      // if user is a member of Leapfrog then there will no any response
-      if (lFMembershipStatus !== undefined) {
-        alert('Aw snap! You are not a member of Leapfrog Technology!');
-        window.location.href = 'https://www.lftechnology.com/careers/';
+      if (!isOrgMember) {
+        this.setState({
+          openModal: true,
+          loading: false,
+          data: null,
+          userDetail: null
+        });
+      } else {
+        this.setState({
+          data: this.getValidPullRequests(data),
+          userDetail,
+          loading: false,
+          otherReposCount: count,
+          error: null
+        });
       }
-      this.setState({
-        data: this.getValidPullRequests(data),
-        userDetail,
-        loading: false,
-        otherReposCount: count,
-        error: null
-      });
     } catch (error) {
       this.setState({
         error,
@@ -211,6 +190,16 @@ class PullRequests extends Component {
     return { ...data, total_count: validPullRequests.length, items: validPullRequests }; // eslint-disable-line camelcase
   }
 
+  closeNotAMemberModal = () => {
+    this.setState({
+      error: true,
+      loading: false,
+      data: null,
+      userDetail: null,
+      openModal: false
+    });
+  };
+
   /**
    * Render the component.
    */
@@ -220,6 +209,9 @@ class PullRequests extends Component {
 
     if (loading) {
       return <LoadingIcon />;
+    }
+    if (this.state.openModal) {
+      return <NotAMember close={this.closeNotAMemberModal} />;
     }
     if (error || data.errors || data.message) {
       return <ErrorText errorMessage={this.getErrorMessage()} />;
