@@ -1,4 +1,5 @@
-import { FROGTOBERFEST_IGNORE_LABEL_LIST } from '../constant/frogtoberfestIgnoreLabels';
+// Ignore list of labels for frogtoberfest, add at end of array for more list
+const FROGTOBERFEST_IGNORE_LABEL_LIST = ['invalid'];
 
 // Makes The Array case insensitive for checking
 const labelIgnoreRegex = new RegExp(FROGTOBERFEST_IGNORE_LABEL_LIST.join('|'), 'i');
