@@ -8,7 +8,6 @@ import PullRequest from './PullRequest';
 import IssuesLink from './IssuesLink';
 import MeLinkInfo from './MeLinkInfo';
 import { GITHUB_TOKEN } from '../../../../config';
-import { isPRLabelValid } from '../../../../utils/pullRequest';
 import { pullRequestAmount, otherReposAmount } from './pullRequestAmount';
 
 /**
@@ -89,13 +88,12 @@ class PullRequests extends Component {
           )
       );
 
-      const [data, userDetail] = await Promise.all(allResponses);
-
-      data.items = data.items.filter(pullRequest => isPRLabelValid(pullRequest.labels));
+      const [responseData, userDetail] = await Promise.all(allResponses);
+      const data = this.getValidPullRequests(responseData);
       const count = this.counterOtherRepos(data, userDetail);
 
       this.setState({
-        data: this.getValidPullRequests(data),
+        data: data,
         userDetail,
         loading: false,
         otherReposCount: count,

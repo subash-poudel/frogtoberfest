@@ -15,8 +15,8 @@ const SiteDetails = () => (
     <div className="px-6 py-4">
       <div className="font-bold mb-4">
         <p className="text-lg mb-1">
-          Frogtoberfest, inspired from Hacktoberfest is a month-long open source
-          contribution challenge for Leapfroggers.
+          Frogtoberfest, inspired from Hacktoberfest is a month-long open source contribution challenge for
+          Leapfroggers.
         </p>
       </div>
       {checklistItems.map((item, index) => (
