@@ -88,7 +88,7 @@ class PullRequests extends Component {
           )
       );
 
-      let [data, userDetail, lFMembershipStatus] = await Promise.all(allResponses);
+      const [data, userDetail, lFMembershipStatus] = await Promise.all(allResponses);
       const count = this.counterOtherRepos(data, userDetail);
 
       // if user is a member of Leapfrog then there will no any response
