@@ -12,6 +12,12 @@ import NotAMember from '../Modal/NotAMember';
 
 const GITHUB_ORG_NAME = 'leapfrogtechnology';
 
+/**
+ * returns an object containing user info
+ *
+ * @param {String} username
+ * @returns {*}
+ */
 export async function fetchUserInfo(username) {
   const apiUrl = [
     `https://api.github.com/search/issues?q=author:${username}+is:pr+created:2019-10-01..2019-10-31`,
@@ -190,6 +196,9 @@ class PullRequests extends Component {
     return { ...data, total_count: validPullRequests.length, items: validPullRequests }; // eslint-disable-line camelcase
   }
 
+  /**
+   * closes modal by setting openModal flag false
+   */
   closeNotAMemberModal = () => {
     this.setState({
       error: true,
