@@ -65,7 +65,8 @@ class PullRequests extends Component {
       const username = this.props.username;
       const apiUrl = [
         `https://api.github.com/search/issues?q=author:${username}+is:pr+created:2019-10-01..2019-10-31`,
-        `https://api.github.com/search/users?q=user:${username}`
+        `https://api.github.com/search/users?q=user:${username}`,
+        `https://api.github.com/orgs/leapfrogtechnology/members/${username}`
       ];
 
       this.setState({
@@ -87,9 +88,14 @@ class PullRequests extends Component {
           )
       );
 
-      const [data, userDetail] = await Promise.all(allResponses);
+      let [data, userDetail, lFMembershipStatus] = await Promise.all(allResponses);
       const count = this.counterOtherRepos(data, userDetail);
 
+      // if user is a member of Leapfrog then there will no any response
+      if (lFMembershipStatus !== undefined) {
+        alert('Aw snap! You are not a member of Leapfrog Technology!');
+        window.location.href = 'https://www.lftechnology.com/careers/';
+      }
       this.setState({
         data: this.getValidPullRequests(data),
         userDetail,
