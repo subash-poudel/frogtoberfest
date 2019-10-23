@@ -175,7 +175,7 @@ class PullRequests extends Component {
       return isPullRequestValid;
     });
 
-    return { ...data, total_count: validPullRequests.length, items: validPullRequests };
+    return { ...data, total_count: validPullRequests.length, items: validPullRequests }; // eslint-disable-line camelcase
   }
 
   /**
