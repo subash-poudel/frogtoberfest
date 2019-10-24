@@ -10,7 +10,6 @@ import Message from './Message';
 const UserInfo = ({ username, userImage, pullRequestCount, otherReposCount }) => (
   <div className="pb-2 flex flex-wrap justify-center content-center rounded mx-auto overflow-hidden w-5/6 lg:w-1/2">
     <div className="mx-4">{userImage && <UserImage userImage={userImage} username={username} />}</div>
-
     <div className="flex flex-col  flex-wrap justify-center content-center">
       <div className="flex flex-wrap justify-center content-center">
         <div
@@ -28,7 +27,6 @@ const UserInfo = ({ username, userImage, pullRequestCount, otherReposCount }) =>
           <ResultMessage message="Other Repo PR'S" />
         </div>
       </div>
-
       <div className="flex flex-wrap justify-center content-center flex-col">
         <Message pullRequestCount={pullRequestCount} otherReposCount={otherReposCount} />
       </div>
