@@ -86,12 +86,13 @@ class PullRequests extends Component {
             })
           )
       );
-
-      const [data, userDetail] = await Promise.all(allResponses);
+      
+      const [responseData, userDetail] = await Promise.all(allResponses);
+      const data = this.getValidPullRequests(responseData);
       const count = this.counterOtherRepos(data, userDetail);
 
       this.setState({
-        data: this.getValidPullRequests(data),
+        data,
         userDetail,
         loading: false,
         otherReposCount: count,
