@@ -15,7 +15,7 @@ const GITHUB_ORG_NAME = 'leapfrogtechnology';
 /**
  * returns an object containing user info
  *
- * @param {String} username
+ * @param {string} username
  * @returns {*}
  */
 export async function fetchUserInfo(username) {
