@@ -92,7 +92,7 @@ class PullRequests extends Component {
       const count = this.counterOtherRepos(data, userDetail);
 
       this.setState({
-        data: data,
+        data,
         userDetail,
         loading: false,
         otherReposCount: count,
