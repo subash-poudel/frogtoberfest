@@ -1,14 +1,14 @@
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
-import LoadingIcon from './LoadingIcon';
-import ErrorText from './ErrorText';
+
+import { GITHUB_TOKEN, TOTAL_PR_COUNT, TOTAL_OTHER_PR_COUNT } from '../../../../config';
 import ShareButtons from './ShareButtons';
-import UserInfo from './UserInfo';
+import LoadingIcon from './LoadingIcon';
 import PullRequest from './PullRequest';
 import IssuesLink from './IssuesLink';
 import MeLinkInfo from './MeLinkInfo';
-import { GITHUB_TOKEN } from '../../../../config';
-import { pullRequestAmount, otherReposAmount } from './pullRequestAmount';
+import ErrorText from './ErrorText';
+import UserInfo from './UserInfo';
 
 /**
  * Pull Requests component.
@@ -92,8 +92,10 @@ class PullRequests extends Component {
       const data = this.getValidPullRequests(responseData);
       const count = this.counterOtherRepos(data, userDetail);
 
+      this.props.setUserContributionCount(data.items.length, count);
+
       this.setState({
-        data: data,
+        data,
         userDetail,
         loading: false,
         otherReposCount: count,
@@ -130,11 +132,11 @@ class PullRequests extends Component {
    * @returns {boolean}
    */
   conditionChecker(data) {
-    if (data.items.length < pullRequestAmount) {
+    if (data.items.length < TOTAL_PR_COUNT) {
       return false;
     }
 
-    return this.state.otherReposCount >= otherReposAmount;
+    return this.state.otherReposCount >= TOTAL_OTHER_PR_COUNT;
   }
 
   /**
@@ -219,7 +221,8 @@ class PullRequests extends Component {
 }
 
 PullRequests.propTypes = {
-  username: PropTypes.string
+  username: PropTypes.string,
+  setUserContributionCount: PropTypes.func.isRequired
 };
 
 export default PullRequests;

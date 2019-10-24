@@ -1,24 +1,94 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, Component } from 'react';
 import PropTypes from 'prop-types';
 import { Helmet } from 'react-helmet';
 import SiteTitle from '../../components/SiteTitle';
 import UsernameForm from '../../components/UsernameForm';
 import PullRequests from './components/PullRequests';
 
-const User = ({
-  match: {
-    params: { username }
+// const User = () => (
+//   <Fragment>
+//     <Helmet>
+//       <title>{username}</title>
+//     </Helmet>
+//     <SiteTitle>Frogtoberfest Checker</SiteTitle>
+//     <UsernameForm username={username} />
+//     <PullRequests username={username} />
+//   </Fragment>
+// );
+
+// import React, {  } from 'react';
+
+/**
+ * User Component
+ *
+ * @export
+ * @class User
+ * @extends {Component}
+ */
+export class User extends Component {
+  /**
+   * Creates an instance of User.
+   *
+   * @param {*} props
+   * @memberof User
+   */
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      pullRequestCount: 0,
+      otherReposCount: 0
+    };
+
+    this.setUserContributionCount = this.setUserContributionCount.bind(this);
   }
-}) => (
-  <Fragment>
-    <Helmet>
-      <title>{username}</title>
-    </Helmet>
-    <SiteTitle>Frogtoberfest Checker</SiteTitle>
-    <UsernameForm username={username} />
-    <PullRequests username={username} />
-  </Fragment>
-);
+
+  /**
+   * Set User Contribution Count of Pull requests and other repo pull request count.
+   *
+   * @param {*} pullRequestCount
+   * @param {*} otherReposCount
+   * @memberof User
+   */
+  setUserContributionCount(pullRequestCount, otherReposCount) {
+    if (pullRequestCount && otherReposCount) {
+      this.setState({
+        pullRequestCount,
+        otherReposCount
+      });
+    }
+  }
+
+  /**
+   * Render.
+   *
+   * @returns
+   * @memberof User
+   */
+  render() {
+    // Get username from props
+    const {
+      match: {
+        params: { username }
+      }
+    } = this.props;
+
+    return (
+      <Fragment>
+        <Helmet>
+          <title>{username}</title>
+        </Helmet>
+        <SiteTitle>Frogtoberfest Checker</SiteTitle>
+        <UsernameForm
+          username={username}
+          pullRequestCount={this.state.pullRequestCount}
+          otherReposCount={this.state.otherReposCount}
+        />
+        <PullRequests username={username} setUserContributionCount={this.setUserContributionCount} />
+      </Fragment>
+    );
+  }
+}
 
 User.propTypes = {
   match: PropTypes.shape({

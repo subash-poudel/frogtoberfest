@@ -1,21 +1,21 @@
-import { pullRequestAmount, otherReposAmount } from '../../pullRequestAmount';
+import { TOTAL_PR_COUNT, TOTAL_OTHER_PR_COUNT } from '../../../../../../config';
 
 const messages = [
   "It's not too late to start!",
   'Off to a great start, keep going!',
   'Keep going!',
   'Keep it up!',
-  'Nice work, Keep it up !',
-  "Nice! Now, don't stop!",
-  "Keep Going, don't stop!",
+  'Nice work!',
+  "Now, don't stop!",
+  "Can't stop now",
   'So close!',
-  'So close! Keep it up !',
+  'Nearing completion, go go go!',
   'Way to go!',
   "Now you're just showing off!"
 ];
 
 /**
- * Get Messages Based on Pull Request and Other Repo count.
+ * Get motivational message based on pull requests count.
  *
  * @param {*} pullRequestCount
  * @param {*} otherReposCount
@@ -32,7 +32,7 @@ function getMessage(pullRequestCount, otherReposCount) {
     return "This year's result.";
   }
 
-  const isShowingOff = pullRequestCount > pullRequestAmount && otherReposCount > otherReposAmount;
+  const isShowingOff = pullRequestCount > TOTAL_PR_COUNT && otherReposCount > TOTAL_OTHER_PR_COUNT;
 
   if (isShowingOff) {
     return messages[messages.length - 1];

@@ -1,10 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import UserImage from './UserImage';
+
+import { TOTAL_PR_COUNT, TOTAL_OTHER_PR_COUNT } from '../../../../../config';
 import PullRequestCount from './PullRequestCount';
 import ResultMessage from './ResultMessage';
-import { pullRequestAmount, otherReposAmount } from '../pullRequestAmount';
-import Message from './Message/Message';
+import UserImage from './UserImage';
+import Message from './Message';
 
 const UserInfo = ({ username, userImage, pullRequestCount, otherReposCount }) => (
   <div className="pb-2 flex flex-wrap justify-center content-center rounded mx-auto overflow-hidden w-5/6 lg:w-1/2">
@@ -14,16 +15,16 @@ const UserInfo = ({ username, userImage, pullRequestCount, otherReposCount }) =>
       <div className="flex flex-wrap justify-center content-center">
         <div
           className="flex flex-wrap justify-center content-center flex-col"
-          style={pullRequestCount >= pullRequestAmount ? completeMark : incompleteMark}
+          style={pullRequestCount >= TOTAL_PR_COUNT ? completeMark : incompleteMark}
         >
-          <PullRequestCount pullRequestCount={pullRequestCount} pullRequestAmount={pullRequestAmount} />
+          <PullRequestCount pullRequestCount={pullRequestCount} pullRequestAmount={TOTAL_PR_COUNT} />
           <ResultMessage message="Total PR'S" />
         </div>
         <div
           className="flex flex-wrap justify-center content-center flex-col"
-          style={otherReposCount >= otherReposAmount ? completeMark : incompleteMark}
+          style={otherReposCount >= TOTAL_OTHER_PR_COUNT ? completeMark : incompleteMark}
         >
-          <PullRequestCount pullRequestCount={otherReposCount} pullRequestAmount={otherReposAmount} />
+          <PullRequestCount pullRequestCount={otherReposCount} pullRequestAmount={TOTAL_OTHER_PR_COUNT} />
           <ResultMessage message="Other Repo PR'S" />
         </div>
       </div>
