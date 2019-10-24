@@ -76,7 +76,6 @@ class UsernameForm extends Component {
    * @param {*} pullRequestCount
    * @param {*} otherReposCount
    * @returns {boolean}
-   * @memberof UsernameForm
    */
   conditionChecker(pullRequestCount, otherReposCount) {
     if (pullRequestCount < TOTAL_PR_COUNT) {

@@ -5,23 +5,9 @@ import SiteTitle from '../../components/SiteTitle';
 import UsernameForm from '../../components/UsernameForm';
 import PullRequests from './components/PullRequests';
 
-// const User = () => (
-//   <Fragment>
-//     <Helmet>
-//       <title>{username}</title>
-//     </Helmet>
-//     <SiteTitle>Frogtoberfest Checker</SiteTitle>
-//     <UsernameForm username={username} />
-//     <PullRequests username={username} />
-//   </Fragment>
-// );
-
-// import React, {  } from 'react';
-
 /**
- * User Component
+ * User Component.
  *
- * @export
  * @class User
  * @extends {Component}
  */
@@ -30,7 +16,6 @@ export class User extends Component {
    * Creates an instance of User.
    *
    * @param {*} props
-   * @memberof User
    */
   constructor(props) {
     super(props);
@@ -48,7 +33,6 @@ export class User extends Component {
    *
    * @param {*} pullRequestCount
    * @param {*} otherReposCount
-   * @memberof User
    */
   setUserContributionCount(pullRequestCount, otherReposCount) {
     if (pullRequestCount && otherReposCount) {
@@ -63,7 +47,6 @@ export class User extends Component {
    * Render.
    *
    * @returns
-   * @memberof User
    */
   render() {
     // Get username from props

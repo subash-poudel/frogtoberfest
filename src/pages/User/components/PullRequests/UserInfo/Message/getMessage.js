@@ -5,11 +5,11 @@ const messages = [
   'Off to a great start, keep going!',
   'Keep going!',
   'Keep it up!',
-  'Nice work!',
+  "Half way there, don't stop now!",
   "Now, don't stop!",
   "Can't stop now",
-  'So close!',
-  'Nearing completion, go go go!',
+  'Going great, just a few more to go!',
+  'Almost there, go go go!',
   'Way to go!',
   "Now you're just showing off!"
 ];
