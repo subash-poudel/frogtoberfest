@@ -77,7 +77,7 @@ class UsernameForm extends Component {
    * @param {*} otherReposCount
    * @returns {boolean}
    */
-  conditionChecker(pullRequestCount, otherReposCount) {
+  checkEligibility(pullRequestCount, otherReposCount) {
     if (pullRequestCount < TOTAL_PR_COUNT) {
       return false;
     }
@@ -86,7 +86,7 @@ class UsernameForm extends Component {
   }
 
   render = () => {
-    const isComplete = this.conditionChecker(this.props.pullRequestCount, this.props.otherReposCount);
+    const isComplete = this.checkEligibility(this.props.pullRequestCount, this.props.otherReposCount);
 
     return (
       <div className="pb-8 md:pt-16">
