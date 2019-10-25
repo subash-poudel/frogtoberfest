@@ -28,6 +28,7 @@ export async function fetchUserInfo(username) {
   const results = apiUrls.map(url => fetchInfoFromGitHub(url, GITHUB_TOKEN));
   let [data, userDetail, membershipStatus] = await Promise.all(results);
   [data, userDetail, membershipStatus] = [await data.json(), await userDetail.json(), membershipStatus.ok];
+
   return { data, userDetail, membershipStatus };
 }
 
@@ -157,13 +158,12 @@ class PullRequests extends Component {
   }
 
   /**
-   * Displays valid PRs.
-   *
-   * @param{*} userInfo
+   * @param {*} userInfo
    */
   displayPullRequests = userInfo => {
     const { data, userDetail } = userInfo;
     const count = this.countOtherRepos(data, userDetail);
+
     this.setState({
       data: this.getValidPullRequests(data),
       userDetail,
