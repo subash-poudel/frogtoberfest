@@ -1,15 +1,15 @@
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
-import LoadingIcon from './LoadingIcon';
-import ErrorText from './ErrorText';
 import ShareButtons from './ShareButtons';
-import UserInfo from './UserInfo';
+import LoadingIcon from './LoadingIcon';
 import PullRequest from './PullRequest';
 import IssuesLink from './IssuesLink';
 import MeLinkInfo from './MeLinkInfo';
-import { GITHUB_TOKEN } from '../../../../config';
 import NotAMember from '../Modal/NotAMember';
+import ErrorText from './ErrorText';
+import UserInfo from './UserInfo';
 import fetchInfoFromGitHub from '../../../../utils/fetchInfoFromGitHub';
+import { GITHUB_TOKEN, TOTAL_PR_COUNT, TOTAL_OTHER_PR_COUNT } from '../../../../config';
 
 export const GITHUB_ORG_NAME = 'leapfrogtechnology';
 
@@ -86,6 +86,7 @@ class PullRequests extends Component {
     try {
       const username = this.props.username;
       const userInfo = await fetchUserInfo(username);
+      console.log(userInfo.membershipStatus)
 
       !userInfo.membershipStatus ? this.showNotAMemberModal() : this.displayPullRequests(userInfo);
     } catch (error) {
@@ -123,11 +124,11 @@ class PullRequests extends Component {
    * @returns {boolean}
    */
   conditionChecker(data) {
-    if (data.items.length < 10) {
+    if (data.items.length < TOTAL_PR_COUNT) {
       return false;
     }
 
-    return this.state.otherReposCount >= 4;
+    return this.state.otherReposCount >= TOTAL_OTHER_PR_COUNT;
   }
 
   /**
@@ -137,7 +138,7 @@ class PullRequests extends Component {
    * @param {*} userDetail
    * @returns {number}
    */
-  counterOtherRepos(data, userDetail) {
+  countOtherRepos(data, userDetail) {
     const user = userDetail.items[0].login;
     let count = 0;
 
@@ -162,10 +163,9 @@ class PullRequests extends Component {
    * @param{*} userInfo
    */
   displayPullRequests = userInfo => {
-    console.log(userInfo);
+    console.log(userInfo)
     const { data, userDetail } = userInfo;
-    const count = this.counterOtherRepos(data, userDetail);
-
+    const count = this.countOtherRepos(data, userDetail);
     this.setState({
       data: this.getValidPullRequests(data),
       userDetail,
@@ -173,7 +173,7 @@ class PullRequests extends Component {
       otherReposCount: count,
       error: null
     });
-  };
+  }
 
   /**
    * Validates and returns an object containing valid pull requests.
@@ -230,6 +230,7 @@ class PullRequests extends Component {
     if (this.state.openModal) {
       return <NotAMember close={this.closeNotAMemberModal} />;
     }
+    // console.log(!!error)
     if (error || data.errors || data.message) {
       return <ErrorText errorMessage={this.getErrorMessage()} />;
     }
@@ -259,7 +260,8 @@ class PullRequests extends Component {
 }
 
 PullRequests.propTypes = {
-  username: PropTypes.string
+  username: PropTypes.string,
+  setUserContributionCount: PropTypes.func.isRequired
 };
 
 export default PullRequests;
