@@ -11,8 +11,6 @@ import UserInfo from './UserInfo';
 import fetchInfoFromGitHub from '../../../../utils/fetchInfoFromGitHub';
 import { GITHUB_TOKEN, TOTAL_PR_COUNT, TOTAL_OTHER_PR_COUNT } from '../../../../config';
 
-export const GITHUB_ORG_NAME = 'leapfrogtechnology';
-
 /**
  * Returns an object containing user info.
  *
