@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 const UsernameInput = ({ value, onChange }) => (
   <input
-    className="bn br--left rounded-l-sm px-2 flex-auto"
+    className="bn br--left rounded-l px-2 flex-auto"
     type="text"
     name="username"
     aria-label="GitHub username"
