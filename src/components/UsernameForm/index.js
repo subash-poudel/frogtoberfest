@@ -94,7 +94,7 @@ class UsernameForm extends Component {
 
         <form
           action="/"
-          className="flex h-8 mx-auto w-5/6 md:w-3/5 lg:w-1/3"
+          className="flex h-8 mx-auto w-3/4 sm:w-1/2"
           method="get"
           onSubmit={this.handleSubmit}
           style={formStyle}
@@ -108,7 +108,9 @@ class UsernameForm extends Component {
 }
 
 const formStyle = {
-  border: '2px solid #133370'
+  border: '1px solid #6cb2eb',
+  borderRadius: '4px',
+  boxShadow: '0 2px 4px 0 rgba(0, 0, 0, 0.1)',
 };
 
 export default withRouter(UsernameForm);
