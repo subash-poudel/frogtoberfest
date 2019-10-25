@@ -23,7 +23,8 @@ UsernameInput.propTypes = {
 };
 
 const inputStyle = {
-  borderRight: '2px solid #133370'
+  borderRight: '1px solid #6cb2eb',
+  outline: 'none',
 };
 
 export default UsernameInput;
