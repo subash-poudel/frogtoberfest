@@ -39,51 +39,10 @@ h1 {
   color: #a52607;
 }
 
-.SiteTitle {
-  text-align: center;
+.bg-gray {
   background-color: #f1f5f8;
 }
 
-.SiteTitle__logo {
-  width: 140px;
-  margin: 0 auto 20px;
-}
-
-.SiteTitle__sub-text {
-  display: block;
-  margin-bottom: 10px;
-  font-size: 12px;
+.text-dark-gray {
   color: #606f7b;
-  letter-spacing: 0.4px;
-  margin-bottom: 20px;
-}
-
-.SiteTitle__image-link {
-  color: #fff;
-  width: 100%;
-  text-decoration: none;
-  display: inline-block;
-}
-
-.SiteDetails {
-  margin-bottom: 30px;
-}
-
-.SiteDetails__text {
-  line-height: 1.45;
-  margin-bottom: 30px;
-}
-
-.SiteDetails__list {
-  padding: 0;
-}
-
-.SiteDetails__list li {
-  margin-bottom: 20px;
-}
-
-@media (min-width: 768px) {
-  .SiteTitle__logo {
-    width: 200px;
-  }
 }

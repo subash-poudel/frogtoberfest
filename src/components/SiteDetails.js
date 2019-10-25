@@ -11,18 +11,18 @@ const checklistItems = [
  * Component to show details about Frogtoberfest in the homepage.
  */
 const SiteDetails = () => (
-  <div className="md:py-4 SiteDetails">
+  <div className="md:py-4 mb-6">
     <div className="rounded mx-auto shadow w-3/4 sm:w-1/2">
       <div className="px-6 py-4">
         <div className="font-bold mb-4">
-          <p className="SiteDetails__text text-lg mb-1">
+          <p className="mb-4 leading-normal text-lg mb-1">
             Frogtoberfest, inspired from Hacktoberfest is a month-long open source
             contribution challenge for Leapfroggers.
           </p>
         </div>
-        <ul className="SiteDetails__list">
+        <ul className="p-0">
           {checklistItems.map((item, index) => (
-            <li className="flex items-center mb-2" key={index}>
+            <li className="flex leading-tight items-center mb-3" key={index}>
               <div className="rounded-full fill-current text-green">
                 <svg
                   className="w-6 h-6 align-middle"
