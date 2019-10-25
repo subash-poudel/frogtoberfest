@@ -27,6 +27,7 @@ export async function fetchUserInfo(username) {
   ];
   const results = apiUrls.map(url => fetchInfoFromGitHub(url, GITHUB_TOKEN));
   let [data, userDetail, membershipStatus] = await Promise.all(results);
+
   [data, userDetail, membershipStatus] = [await data.json(), await userDetail.json(), membershipStatus.ok];
 
   return { data, userDetail, membershipStatus };
