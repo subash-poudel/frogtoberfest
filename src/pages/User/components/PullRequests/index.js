@@ -9,37 +9,26 @@ import IssuesLink from './IssuesLink';
 import MeLinkInfo from './MeLinkInfo';
 import { GITHUB_TOKEN } from '../../../../config';
 import NotAMember from '../Modal/NotAMember';
+import fetchInfoFromGitHub from '../../../../utils/fetchInfoFromGitHub';
 
-const GITHUB_ORG_NAME = 'leapfrogtechnology';
+export const GITHUB_ORG_NAME = 'leapfrogtechnology';
 
 /**
- * returns an object containing user info
+ * Returns an object containing user info.
  *
  * @param {string} username
  * @returns {*}
  */
 export async function fetchUserInfo(username) {
-  const apiUrl = [
+  const apiUrls = [
     `https://api.github.com/search/issues?q=author:${username}+is:pr+created:2019-10-01..2019-10-31`,
     `https://api.github.com/search/users?q=user:${username}`,
     `https://api.github.com/orgs/${GITHUB_ORG_NAME}/members/${username}`
   ];
-
-  const allResponses = apiUrl.map(url =>
-    fetch(url, {
-      headers: {
-        Authorization: `token ${GITHUB_TOKEN}`
-      }
-    })
-      .then(response => response)
-      .catch(error => error)
-  );
-  let [data, userDetail, membershipStatus] = await Promise.all(allResponses);
-  data = await data.json();
-  userDetail = await userDetail.json();
-  const isOrgMember = membershipStatus.status === 204;
-
-  return { data, userDetail, isOrgMember };
+  const results = apiUrls.map(url => fetchInfoFromGitHub(url, GITHUB_TOKEN));
+  let [data, userDetail, membershipStatus] = await Promise.all(results);
+  [data, userDetail, membershipStatus] = [await data.json(), await userDetail.json(), membershipStatus.ok];
+  return { data, userDetail, membershipStatus };
 }
 
 /**
@@ -96,25 +85,9 @@ class PullRequests extends Component {
   fetchPullRequests = async () => {
     try {
       const username = this.props.username;
-      const { data, userDetail, isOrgMember } = await fetchUserInfo(username);
-      const count = this.counterOtherRepos(data, userDetail);
+      const userInfo = await fetchUserInfo(username);
 
-      if (!isOrgMember) {
-        this.setState({
-          openModal: true,
-          loading: false,
-          data: null,
-          userDetail: null
-        });
-      } else {
-        this.setState({
-          data: this.getValidPullRequests(data),
-          userDetail,
-          loading: false,
-          otherReposCount: count,
-          error: null
-        });
-      }
+      !userInfo.membershipStatus ? this.showNotAMemberModal() : this.displayPullRequests(userInfo);
     } catch (error) {
       this.setState({
         error,
@@ -124,6 +97,10 @@ class PullRequests extends Component {
       });
     }
   };
+
+  /**
+   * Displays error message.
+   */
 
   getErrorMessage = () => {
     const { data, error } = this.state;
@@ -180,6 +157,25 @@ class PullRequests extends Component {
   }
 
   /**
+   * Displays valid PRs.
+   *
+   * @param{*} userInfo
+   */
+  displayPullRequests = userInfo => {
+    console.log(userInfo);
+    const { data, userDetail } = userInfo;
+    const count = this.counterOtherRepos(data, userDetail);
+
+    this.setState({
+      data: this.getValidPullRequests(data),
+      userDetail,
+      loading: false,
+      otherReposCount: count,
+      error: null
+    });
+  };
+
+  /**
    * Validates and returns an object containing valid pull requests.
    *
    * @param {*} data
@@ -197,7 +193,19 @@ class PullRequests extends Component {
   }
 
   /**
-   * closes modal by setting openModal flag false
+   * Pops up NotAMember modal for non leapfroggers.
+   */
+  showNotAMemberModal = () => {
+    this.setState({
+      openModal: true,
+      loading: false,
+      data: null,
+      userDetail: null
+    });
+  };
+
+  /**
+   * Closes modal by setting openModal flag false.
    */
   closeNotAMemberModal = () => {
     this.setState({
