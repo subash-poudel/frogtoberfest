@@ -43,7 +43,7 @@ export class User extends Component {
   /**
    * Render method for User Component.
    *
-   * @returns React.Element
+   * @returns React.Element.
    */
   render() {
     const {
