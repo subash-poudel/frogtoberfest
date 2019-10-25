@@ -90,7 +90,7 @@ class PullRequests extends Component {
 
       const [responseData, userDetail] = await Promise.all(allResponses);
       const data = this.getValidPullRequests(responseData);
-      const count = this.counterOtherRepos(data, userDetail);
+      const count = this.countOtherRepos(data, userDetail);
 
       this.props.setUserContributionCount(data.items.length, count);
 
@@ -146,7 +146,7 @@ class PullRequests extends Component {
    * @param {*} userDetail
    * @returns {number}
    */
-  counterOtherRepos(data, userDetail) {
+  countOtherRepos(data, userDetail) {
     const user = userDetail.items[0].login;
     let count = 0;
 

@@ -7,13 +7,10 @@ import PullRequests from './components/PullRequests';
 
 /**
  * User Component.
- *
- * @class User
- * @extends {Component}
  */
 export class User extends Component {
   /**
-   * Creates state of User and bind functions.
+   * User component constructor to set initial state.
    *
    * @param {*} props
    */
@@ -29,7 +26,7 @@ export class User extends Component {
   }
 
   /**
-   * Set User Contribution Count of Pull requests and other repo pull request count.
+   * Set user contribution count of pull requests and other pull request count.
    *
    * @param {*} totalPrCount
    * @param {*} totalOtherPrCount
@@ -44,12 +41,11 @@ export class User extends Component {
   }
 
   /**
-   * Render.
+   * Render method for User Component.
    *
-   * @returns User Component View.
+   * @returns React.Element
    */
   render() {
-    // Get username from props
     const {
       match: {
         params: { username }
