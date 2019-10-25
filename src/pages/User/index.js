@@ -13,7 +13,7 @@ import PullRequests from './components/PullRequests';
  */
 export class User extends Component {
   /**
-   * Creates an instance of User.
+   * Creates state of User and bind functions.
    *
    * @param {*} props
    */
