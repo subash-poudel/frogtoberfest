@@ -14,8 +14,8 @@ import CheckButton from './CheckButton';
 class UsernameForm extends Component {
   static propTypes = {
     username: PropTypes.string,
-    pullRequestCount: PropTypes.number,
-    otherReposCount: PropTypes.number,
+    totalPrCount: PropTypes.number,
+    totalOtherPrCount: PropTypes.number,
     // Provided by withRouter()
     history: PropTypes.shape({
       push: PropTypes.func.isRequired
@@ -24,8 +24,8 @@ class UsernameForm extends Component {
 
   static defaultProps = {
     username: '',
-    pullRequestCount: 0,
-    otherReposCount: 0
+    totalPrCount: 0,
+    totalOtherPrCount: 0
   };
 
   state = {
@@ -86,7 +86,7 @@ class UsernameForm extends Component {
   }
 
   render = () => {
-    const isComplete = this.checkEligibility(this.props.pullRequestCount, this.props.otherReposCount);
+    const isComplete = this.checkEligibility(this.props.totalPrCount, this.props.totalOtherPrCount);
 
     return (
       <div className="pb-8 md:pt-16">

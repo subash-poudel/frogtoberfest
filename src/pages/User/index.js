@@ -21,8 +21,8 @@ export class User extends Component {
     super(props);
 
     this.state = {
-      pullRequestCount: 0,
-      otherReposCount: 0
+      totalPrCount: 0,
+      totalOtherPrCount: 0
     };
 
     this.setUserContributionCount = this.setUserContributionCount.bind(this);
@@ -31,14 +31,14 @@ export class User extends Component {
   /**
    * Set User Contribution Count of Pull requests and other repo pull request count.
    *
-   * @param {*} pullRequestCount
-   * @param {*} otherReposCount
+   * @param {*} totalPrCount
+   * @param {*} totalOtherPrCount
    */
-  setUserContributionCount(pullRequestCount, otherReposCount) {
-    if (pullRequestCount && otherReposCount) {
+  setUserContributionCount(totalPrCount, totalOtherPrCount) {
+    if (totalPrCount && totalOtherPrCount) {
       this.setState({
-        pullRequestCount,
-        otherReposCount
+        totalPrCount,
+        totalOtherPrCount
       });
     }
   }
@@ -64,8 +64,8 @@ export class User extends Component {
         <SiteTitle>Frogtoberfest Checker</SiteTitle>
         <UsernameForm
           username={username}
-          pullRequestCount={this.state.pullRequestCount}
-          otherReposCount={this.state.otherReposCount}
+          totalPrCount={this.state.totalPrCount}
+          totalOtherPrCount={this.state.totalOtherPrCount}
         />
         <PullRequests username={username} setUserContributionCount={this.setUserContributionCount} />
       </Fragment>
