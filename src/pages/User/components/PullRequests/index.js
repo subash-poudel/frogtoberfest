@@ -9,7 +9,7 @@ import NotAMember from '../Modal/NotAMember';
 import ErrorText from './ErrorText';
 import UserInfo from './UserInfo';
 import fetchInfoFromGitHub from '../../../../utils/fetchInfoFromGitHub';
-import { GITHUB_TOKEN, TOTAL_PR_COUNT, TOTAL_OTHER_PR_COUNT } from '../../../../config';
+import { GITHUB_TOKEN, TOTAL_PR_COUNT, TOTAL_OTHER_PR_COUNT, GITHUB_ORG_NAME } from '../../../../config';
 
 /**
  * Returns an object containing user info.
