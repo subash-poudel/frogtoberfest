@@ -46,7 +46,7 @@ export class User extends Component {
   /**
    * Render.
    *
-   * @returns
+   * @returns User Component View.
    */
   render() {
     // Get username from props

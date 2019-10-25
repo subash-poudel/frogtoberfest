@@ -5,7 +5,7 @@ import { TOTAL_PR_COUNT, TOTAL_OTHER_PR_COUNT } from '../../../../../config';
 import PullRequestCount from './PullRequestCount';
 import ResultMessage from './ResultMessage';
 import UserImage from './UserImage';
-import Message from './Message';
+import MotivationalMessage from './MotivationalMessage';
 
 const UserInfo = ({ username, userImage, pullRequestCount, otherReposCount }) => (
   <div className="pb-2 flex flex-wrap justify-center content-center rounded mx-auto overflow-hidden w-5/6 lg:w-1/2">
@@ -28,7 +28,7 @@ const UserInfo = ({ username, userImage, pullRequestCount, otherReposCount }) =>
         </div>
       </div>
       <div className="flex flex-wrap justify-center content-center flex-col">
-        <Message pullRequestCount={pullRequestCount} otherReposCount={otherReposCount} />
+        <MotivationalMessage pullRequestCount={pullRequestCount} otherReposCount={otherReposCount} />
       </div>
     </div>
   </div>

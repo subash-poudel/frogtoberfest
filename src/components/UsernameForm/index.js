@@ -73,16 +73,16 @@ class UsernameForm extends Component {
   /**
    * Check the condition for eligibility.
    *
-   * @param {*} pullRequestCount
-   * @param {*} otherReposCount
+   * @param {*} totalPrCount
+   * @param {*} totalOtherPrCount
    * @returns {boolean}
    */
-  checkEligibility(pullRequestCount, otherReposCount) {
-    if (pullRequestCount < TOTAL_PR_COUNT) {
+  checkEligibility(totalPrCount, totalOtherPrCount) {
+    if (totalPrCount < TOTAL_PR_COUNT) {
       return false;
     }
 
-    return otherReposCount >= TOTAL_OTHER_PR_COUNT;
+    return totalOtherPrCount >= TOTAL_OTHER_PR_COUNT;
   }
 
   render = () => {
