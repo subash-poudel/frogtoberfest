@@ -86,7 +86,6 @@ class PullRequests extends Component {
     try {
       const username = this.props.username;
       const userInfo = await fetchUserInfo(username);
-      console.log(userInfo.membershipStatus)
 
       !userInfo.membershipStatus ? this.showNotAMemberModal() : this.displayPullRequests(userInfo);
     } catch (error) {
@@ -163,7 +162,6 @@ class PullRequests extends Component {
    * @param{*} userInfo
    */
   displayPullRequests = userInfo => {
-    console.log(userInfo)
     const { data, userDetail } = userInfo;
     const count = this.countOtherRepos(data, userDetail);
     this.setState({
@@ -173,7 +171,7 @@ class PullRequests extends Component {
       otherReposCount: count,
       error: null
     });
-  }
+  };
 
   /**
    * Validates and returns an object containing valid pull requests.
@@ -230,7 +228,6 @@ class PullRequests extends Component {
     if (this.state.openModal) {
       return <NotAMember close={this.closeNotAMemberModal} />;
     }
-    // console.log(!!error)
     if (error || data.errors || data.message) {
       return <ErrorText errorMessage={this.getErrorMessage()} />;
     }
