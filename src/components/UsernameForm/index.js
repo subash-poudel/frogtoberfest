@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import withRouter from 'react-router-dom/withRouter';
-import TimeMessage from './TimeMessage';
+import PropTypes from 'prop-types';
+
+import { TOTAL_PR_COUNT, TOTAL_OTHER_PR_COUNT } from '../../config';
+import CompletionMessage from './CompletionMessage';
 import UsernameInput from './UsernameInput';
+import TimeMessage from './TimeMessage';
 import CheckButton from './CheckButton';
 
 /**
@@ -11,6 +14,8 @@ import CheckButton from './CheckButton';
 class UsernameForm extends Component {
   static propTypes = {
     username: PropTypes.string,
+    totalPrCount: PropTypes.number,
+    totalOtherPrCount: PropTypes.number,
     // Provided by withRouter()
     history: PropTypes.shape({
       push: PropTypes.func.isRequired
@@ -18,7 +23,9 @@ class UsernameForm extends Component {
   };
 
   static defaultProps = {
-    username: ''
+    username: '',
+    totalPrCount: 0,
+    totalOtherPrCount: 0
   };
 
   state = {
@@ -63,21 +70,41 @@ class UsernameForm extends Component {
     return `/user/${username}`;
   };
 
-  render = () => (
-    <div className="pb-8 md:pt-16">
-      <TimeMessage />
-      <form
-        action="/"
-        className="flex h-8 mx-auto w-3/4 sm:w-1/2"
-        method="get"
-        onSubmit={this.handleSubmit}
-        style={formStyle}
-      >
-        <UsernameInput value={this.state.username} onChange={this.handleUsernameChange} />
-        <CheckButton />
-      </form>
-    </div>
-  );
+  /**
+   * Check the condition for eligibility.
+   *
+   * @param {*} totalPrCount
+   * @param {*} totalOtherPrCount
+   * @returns {boolean}
+   */
+  checkEligibility(totalPrCount, totalOtherPrCount) {
+    if (totalPrCount < TOTAL_PR_COUNT) {
+      return false;
+    }
+
+    return totalOtherPrCount >= TOTAL_OTHER_PR_COUNT;
+  }
+
+  render = () => {
+    const isComplete = this.checkEligibility(this.props.totalPrCount, this.props.totalOtherPrCount);
+
+    return (
+      <div className="pb-8 md:pt-16">
+        {isComplete ? <CompletionMessage /> : <TimeMessage />}
+
+        <form
+          action="/"
+          className="flex h-8 mx-auto w-3/4 sm:w-1/2"
+          method="get"
+          onSubmit={this.handleSubmit}
+          style={formStyle}
+        >
+          <UsernameInput value={this.state.username} onChange={this.handleUsernameChange} />
+          <CheckButton />
+        </form>
+      </div>
+    );
+  };
 }
 
 const formStyle = {
