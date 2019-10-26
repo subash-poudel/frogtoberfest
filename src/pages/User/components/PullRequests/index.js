@@ -5,10 +5,9 @@ import LoadingIcon from './LoadingIcon';
 import PullRequest from './PullRequest';
 import IssuesLink from './IssuesLink';
 import MeLinkInfo from './MeLinkInfo';
-import NotAMember from '../Modal/NotAMember';
 import ErrorText from './ErrorText';
 import UserInfo from './UserInfo';
-import Utils from '../../../../utils/Utils';
+import { fetchInfoFromGitHub } from '../../../../utils/utils';
 import { GITHUB_TOKEN, TOTAL_PR_COUNT, TOTAL_OTHER_PR_COUNT, ORG_INFO } from '../../../../config';
 
 /**
@@ -23,7 +22,7 @@ export async function fetchUserInfo(username) {
     `https://api.github.com/search/users?q=user:${username}`,
     `https://api.github.com/orgs/${ORG_INFO.GITHUB_ORG_NAME}/members/${username}`
   ];
-  const results = apiUrls.map(url => Utils.fetchInfoFromGitHub(url, GITHUB_TOKEN));
+  const results = apiUrls.map(url => fetchInfoFromGitHub(url, GITHUB_TOKEN));
   let [data, userDetail, membershipStatus] = await Promise.all(results);
 
   [data, userDetail, membershipStatus] = [await data.json(), await userDetail.json(), membershipStatus.ok];
@@ -100,6 +99,8 @@ class PullRequests extends Component {
 
   /**
    * Displays general error message.
+   * 
+   * @returns {node}
    */
   getErrorMessage = () => {
     const { data, error } = this.state;
@@ -117,11 +118,13 @@ class PullRequests extends Component {
 
   /**
    * Displays Error if User is not a member of organization.
+   * 
+   * @returns {node}
    */
   getNotAMemberMessage = () => {
     return (
       <>
-        You are not a member of Leapfrog Technology. You can join us from{' '}
+        You are not a member of Leapfrog Technology. You can join us from
         <a href={ORG_INFO.ORG_REDIRECT_URL}> here </a> :).
       </>
     );
@@ -204,7 +207,7 @@ class PullRequests extends Component {
   }
 
   /**
-   * Pops up NotAMember modal for non leapfroggers.
+   * Shows up NotAMember message for non leapfroggers.
    */
   showNotAMemberMessage = () => {
     this.setState({
