@@ -8,7 +8,7 @@ import MeLinkInfo from './MeLinkInfo';
 import ErrorText from './ErrorText';
 import UserInfo from './UserInfo';
 import { fetchInfoFromGitHub } from '../../../../utils/utils';
-import { GITHUB_TOKEN, TOTAL_PR_COUNT, TOTAL_OTHER_PR_COUNT, GITHUB_ORG_NAME, ORG_REDIRECT_URL } from '../../../../config';
+import { GITHUB_TOKEN, TOTAL_PR_COUNT, TOTAL_OTHER_PR_COUNT, GITHUB_ORG_NAME, LF_CAREER_URL } from '../../../../config';
 
 /**
  * Returns an object containing user info.
@@ -124,8 +124,11 @@ class PullRequests extends Component {
   getNotAMemberMessage = () => {
     return (
       <>
-        You are not a member of Leapfrog Technology. You can join us from
-        <a href={ORG_REDIRECT_URL}> here </a> :).
+        You are not a member of Leapfrog Technology. However, you can join our{' '}
+        <a href={LF_CAREER_URL} target="blank ">
+          awesome team
+        </a>
+        . 😉
       </>
     );
   };
