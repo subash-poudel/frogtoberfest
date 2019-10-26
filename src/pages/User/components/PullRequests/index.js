@@ -113,7 +113,7 @@ class PullRequests extends Component {
       return <> data.errors.message</>;
     }
 
-    return <> Couldn't find any data or we hit an error, try again?</>;
+    return <> Couldn&apos;t find any data or we hit an error, try again?</>;
   };
 
   /**
