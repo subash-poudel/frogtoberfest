@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { HOSTNAME } from '../config';
-import frogtoberfestLogo from '../assets/images/frogtoberfest-logo-1x.png';
+import frogtoberfestLogo from '../assets/images/frogtoberfest-logo.png';
 
 const SiteTitle = () => (
   <div className="md:py-4 text-center bg-grey-lighter">
