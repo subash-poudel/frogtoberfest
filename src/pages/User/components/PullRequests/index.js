@@ -8,7 +8,7 @@ import MeLinkInfo from './MeLinkInfo';
 import ErrorText from './ErrorText';
 import UserInfo from './UserInfo';
 import { fetchInfoFromGitHub } from '../../../../utils/utils';
-import { GITHUB_TOKEN, TOTAL_PR_COUNT, TOTAL_OTHER_PR_COUNT, ORG_INFO } from '../../../../config';
+import { GITHUB_TOKEN, TOTAL_PR_COUNT, TOTAL_OTHER_PR_COUNT, GITHUB_ORG_NAME, ORG_REDIRECT_URL } from '../../../../config';
 
 /**
  * Returns an object containing user info.
@@ -20,7 +20,7 @@ export async function fetchUserInfo(username) {
   const apiUrls = [
     `https://api.github.com/search/issues?q=author:${username}+is:pr+created:2019-10-01..2019-10-31`,
     `https://api.github.com/search/users?q=user:${username}`,
-    `https://api.github.com/orgs/${ORG_INFO.GITHUB_ORG_NAME}/members/${username}`
+    `https://api.github.com/orgs/${GITHUB_ORG_NAME}/members/${username}`
   ];
   const results = apiUrls.map(url => fetchInfoFromGitHub(url, GITHUB_TOKEN));
   let [data, userDetail, membershipStatus] = await Promise.all(results);
@@ -125,7 +125,7 @@ class PullRequests extends Component {
     return (
       <>
         You are not a member of Leapfrog Technology. You can join us from
-        <a href={ORG_INFO.ORG_REDIRECT_URL}> here </a> :).
+        <a href={ORG_REDIRECT_URL}> here </a> :).
       </>
     );
   };
