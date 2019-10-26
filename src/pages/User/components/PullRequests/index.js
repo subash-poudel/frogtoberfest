@@ -99,7 +99,7 @@ class PullRequests extends Component {
 
   /**
    * Displays general error message.
-   * 
+   *
    * @returns {node}
    */
   getErrorMessage = () => {
@@ -118,7 +118,7 @@ class PullRequests extends Component {
 
   /**
    * Displays Error if User is not a member of organization.
-   * 
+   *
    * @returns {node}
    */
   getNotAMemberMessage = () => {
@@ -172,7 +172,7 @@ class PullRequests extends Component {
 
   /**
    * Change state to list PRs.
-   * 
+   *
    * @param {*} userInfo
    */
   displayPullRequests = userInfo => {

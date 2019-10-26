@@ -17,7 +17,7 @@ const GithubCorner = () => (
       style={{
         fill: '#EE7600',
         color: '#FFFFFF',
-        border: 0,
+        border: 0
       }}
       aria-hidden="true"
     >

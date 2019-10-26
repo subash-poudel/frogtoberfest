@@ -1,7 +1,7 @@
 /**
  * Returns formatted date eg Wed Jul 28 1993.
- * 
- * @param {date} dateTime  
+ *
+ * @param {date} dateTime
  * @returns {date}
  */
 export function dateFormatter(dateTime) {
@@ -12,9 +12,9 @@ export function dateFormatter(dateTime) {
 
 /**
  * Fetch and return responses from Github apis.
- * 
- * @param {*} url 
- * @param {*} GITHUB_TOKEN  
+ *
+ * @param {*} url
+ * @param {*} GITHUB_TOKEN
  * @returns {Promise}
  */
 export function fetchInfoFromGitHub(url, GITHUB_TOKEN) {
