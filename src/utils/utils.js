@@ -6,8 +6,9 @@
  */
 export function formatDate(dateTime) {
   const date = new Date(dateTime);
+  const options = { year: 'numeric', month: 'long', day: 'numeric' };
 
-  return date.toDateString();
+  return date.toLocaleDateString('en-us', options);
 }
 
 /**
