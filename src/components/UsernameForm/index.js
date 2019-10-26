@@ -93,11 +93,9 @@ class UsernameForm extends Component {
         {isComplete ? <CompletionMessage /> : <TimeMessage />}
 
         <form
-          action="/"
-          className="flex h-8 mx-auto w-5/6 md:w-3/5 lg:w-1/3"
-          method="get"
+          className="flex mx-auto w-3/4 sm:w-1/2"
+          style={{ boxShadow: '0 1px 2px rgba(0, 0, 0, 0.1)' }}
           onSubmit={this.handleSubmit}
-          style={formStyle}
         >
           <UsernameInput value={this.state.username} onChange={this.handleUsernameChange} />
           <CheckButton />
@@ -106,9 +104,5 @@ class UsernameForm extends Component {
     );
   };
 }
-
-const formStyle = {
-  border: '2px solid #133370'
-};
 
 export default withRouter(UsernameForm);
