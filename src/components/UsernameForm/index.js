@@ -89,7 +89,7 @@ class UsernameForm extends Component {
     const isComplete = this.checkEligibility(this.props.totalPrCount, this.props.totalOtherPrCount);
 
     return (
-      <div className="pb-8 md:pt-16">
+      <div className="pb-8 sm:pt-10">
         {isComplete ? <CompletionMessage /> : <TimeMessage />}
 
         <form

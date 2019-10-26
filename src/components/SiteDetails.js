@@ -37,7 +37,7 @@ const SiteDetails = () => (
                   <polyline points="22 4 12 14.01 9 11.01"></polyline>
                 </svg>
               </div>
-              <span className="text-gray-700 text-m ml-2">{item}</span>
+              <span className="text-grey-darker text-m ml-2">{item}</span>
             </li>
           ))}
         </ul>
