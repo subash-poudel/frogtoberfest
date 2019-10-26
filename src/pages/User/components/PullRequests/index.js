@@ -1,7 +1,5 @@
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
-
-import { GITHUB_TOKEN, TOTAL_PR_COUNT, TOTAL_OTHER_PR_COUNT } from '../../../../config';
 import ShareButtons from './ShareButtons';
 import LoadingIcon from './LoadingIcon';
 import PullRequest from './PullRequest';
@@ -9,6 +7,28 @@ import IssuesLink from './IssuesLink';
 import MeLinkInfo from './MeLinkInfo';
 import ErrorText from './ErrorText';
 import UserInfo from './UserInfo';
+import { fetchInfoFromGitHub } from '../../../../utils/utils';
+import { GITHUB_TOKEN, TOTAL_PR_COUNT, TOTAL_OTHER_PR_COUNT, GITHUB_ORG_NAME, ORG_REDIRECT_URL } from '../../../../config';
+
+/**
+ * Returns an object containing user info.
+ *
+ * @param {string} username
+ * @returns {*}
+ */
+export async function fetchUserInfo(username) {
+  const apiUrls = [
+    `https://api.github.com/search/issues?q=author:${username}+is:pr+created:2019-10-01..2019-10-31`,
+    `https://api.github.com/search/users?q=user:${username}`,
+    `https://api.github.com/orgs/${GITHUB_ORG_NAME}/members/${username}`
+  ];
+  const results = apiUrls.map(url => fetchInfoFromGitHub(url, GITHUB_TOKEN));
+  let [data, userDetail, membershipStatus] = await Promise.all(results);
+
+  [data, userDetail, membershipStatus] = [await data.json(), await userDetail.json(), membershipStatus.ok];
+
+  return { data, userDetail, membershipStatus };
+}
 
 /**
  * Pull Requests component.
@@ -64,43 +84,9 @@ class PullRequests extends Component {
   fetchPullRequests = async () => {
     try {
       const username = this.props.username;
-      const apiUrl = [
-        `https://api.github.com/search/issues?q=author:${username}+is:pr+created:2019-10-01..2019-10-31`,
-        `https://api.github.com/search/users?q=user:${username}`
-      ];
+      const userInfo = await fetchUserInfo(username);
 
-      this.setState({
-        loading: true
-      });
-
-      const allResponses = apiUrl.map(url =>
-        fetch(url, {
-          headers: {
-            Authorization: `token ${GITHUB_TOKEN}`
-          }
-        })
-          .then(response => response.json())
-          .catch(error =>
-            this.setState({
-              loading: false,
-              error
-            })
-          )
-      );
-
-      const [responseData, userDetail] = await Promise.all(allResponses);
-      const data = this.getValidPullRequests(responseData);
-      const count = this.countOtherRepos(data, userDetail);
-
-      this.props.setUserContributionCount(data.items.length, count);
-
-      this.setState({
-        data,
-        userDetail,
-        loading: false,
-        otherReposCount: count,
-        error: null
-      });
+      !userInfo.membershipStatus ? this.showNotAMemberMessage() : this.displayPullRequests(userInfo);
     } catch (error) {
       this.setState({
         error,
@@ -111,18 +97,37 @@ class PullRequests extends Component {
     }
   };
 
+  /**
+   * Displays general error message.
+   *
+   * @returns {node}
+   */
   getErrorMessage = () => {
     const { data, error } = this.state;
 
     if (error && error.description) {
-      return error.error_description;
+      return <> error.error_description</>;
     }
 
     if (data && data.errors) {
-      return data.errors.message;
+      return <> data.errors.message</>;
     }
 
-    return "Couldn't find any data or we hit an error, try again?";
+    return <> Couldn&apos;t find any data or we hit an error, try again?</>;
+  };
+
+  /**
+   * Displays Error if User is not a member of organization.
+   *
+   * @returns {node}
+   */
+  getNotAMemberMessage = () => {
+    return (
+      <>
+        You are not a member of Leapfrog Technology. You can join us from
+        <a href={ORG_REDIRECT_URL}> here </a> :).
+      </>
+    );
   };
 
   /**
@@ -166,6 +171,25 @@ class PullRequests extends Component {
   }
 
   /**
+   * Change state to list PRs.
+   *
+   * @param {*} userInfo
+   */
+  displayPullRequests = userInfo => {
+    const { data, userDetail } = userInfo;
+    const count = this.countOtherRepos(data, userDetail);
+
+    this.setState({
+      data: this.getValidPullRequests(data),
+      userDetail,
+      loading: false,
+      otherReposCount: count,
+      error: null,
+      isOrgMember: true
+    });
+  };
+
+  /**
    * Validates and returns an object containing valid pull requests.
    *
    * @param {*} data
@@ -183,6 +207,18 @@ class PullRequests extends Component {
   }
 
   /**
+   * Shows up NotAMember message for non leapfroggers.
+   */
+  showNotAMemberMessage = () => {
+    this.setState({
+      isOrgMember: false,
+      loading: false,
+      data: null,
+      userDetail: null
+    });
+  };
+
+  /**
    * Render the component.
    */
   render = () => {
@@ -191,6 +227,9 @@ class PullRequests extends Component {
 
     if (loading) {
       return <LoadingIcon />;
+    }
+    if (!this.state.isOrgMember) {
+      return <ErrorText errorMessage={this.getNotAMemberMessage()} />;
     }
     if (error || data.errors || data.message) {
       return <ErrorText errorMessage={this.getErrorMessage()} />;
