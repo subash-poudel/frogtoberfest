@@ -1,4 +1,4 @@
-import { formatDate } from './dateFormater';
+import { formatDate } from './utils';
 
 describe('formatDate', () => {
   const expectedDateString = "Sat Oct 26 2019";
