@@ -2,7 +2,7 @@
  * Returns formatted date eg Wed Jul 28 1993.
  *
  * @param {string} dateTime
- * @returns {string} dateTime
+ * @returns {string}
  */
 export function formatDate(dateTime) {
   const date = new Date(dateTime);
