@@ -1,13 +1,14 @@
 /**
- * Returns formatted date eg Wed Jul 28 1993.
+ * Returns formatted date eg July 28, 1993.
  *
  * @param {string} dateTime
  * @returns {string}
  */
 export function formatDate(dateTime) {
   const date = new Date(dateTime);
+  const options = { year: 'numeric', month: 'long', day: 'numeric' };
 
-  return date.toDateString();
+  return date.toLocaleDateString('en-US', options);
 }
 
 /**
