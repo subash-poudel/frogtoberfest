@@ -1,10 +1,10 @@
 /**
  * Returns formatted date eg Wed Jul 28 1993.
  *
- * @param {date} dateTime
- * @returns {date}
+ * @param {string} dateTime
+ * @returns {string} dateTime
  */
-export function dateFormatter(dateTime) {
+export function formatDate(dateTime) {
   const date = new Date(dateTime);
 
   return date.toDateString();
@@ -14,13 +14,13 @@ export function dateFormatter(dateTime) {
  * Fetch and return responses from Github apis.
  *
  * @param {*} url
- * @param {*} GITHUB_TOKEN
+ * @param {*} githubToken
  * @returns {Promise}
  */
-export function fetchInfoFromGitHub(url, GITHUB_TOKEN) {
+export function fetchInfoFromGitHub(url, githubToken) {
   const response = fetch(url, {
     headers: {
-      Authorization: `token ${GITHUB_TOKEN}`
+      Authorization: `token ${githubToken}`
     }
   })
     .then(response => response)
