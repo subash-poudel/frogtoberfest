@@ -1,14 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const ErrorText = ({ errorMessage }) => (
+const ErrorText = ({ errorMessage, notAUserErrorMsg }) => (
   <p className="text-center" style={errorTextStyle}>
     {errorMessage}
   </p>
 );
 
 ErrorText.propTypes = {
-  errorMessage: PropTypes.string
+  errorMessage: PropTypes.node
 };
 
 ErrorText.defaultProps = {

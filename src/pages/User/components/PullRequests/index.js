@@ -8,8 +8,8 @@ import MeLinkInfo from './MeLinkInfo';
 import NotAMember from '../Modal/NotAMember';
 import ErrorText from './ErrorText';
 import UserInfo from './UserInfo';
-import fetchInfoFromGitHub from '../../../../utils/fetchInfoFromGitHub';
-import { GITHUB_TOKEN, TOTAL_PR_COUNT, TOTAL_OTHER_PR_COUNT, GITHUB_ORG_NAME } from '../../../../config';
+import Utils from '../../../../utils/Utils';
+import { GITHUB_TOKEN, TOTAL_PR_COUNT, TOTAL_OTHER_PR_COUNT, ORG_INFO } from '../../../../config';
 
 /**
  * Returns an object containing user info.
@@ -21,9 +21,9 @@ export async function fetchUserInfo(username) {
   const apiUrls = [
     `https://api.github.com/search/issues?q=author:${username}+is:pr+created:2019-10-01..2019-10-31`,
     `https://api.github.com/search/users?q=user:${username}`,
-    `https://api.github.com/orgs/${GITHUB_ORG_NAME}/members/${username}`
+    `https://api.github.com/orgs/${ORG_INFO.GITHUB_ORG_NAME}/members/${username}`
   ];
-  const results = apiUrls.map(url => fetchInfoFromGitHub(url, GITHUB_TOKEN));
+  const results = apiUrls.map(url => Utils.fetchInfoFromGitHub(url, GITHUB_TOKEN));
   let [data, userDetail, membershipStatus] = await Promise.all(results);
 
   [data, userDetail, membershipStatus] = [await data.json(), await userDetail.json(), membershipStatus.ok];
@@ -87,7 +87,7 @@ class PullRequests extends Component {
       const username = this.props.username;
       const userInfo = await fetchUserInfo(username);
 
-      !userInfo.membershipStatus ? this.showNotAMemberModal() : this.displayPullRequests(userInfo);
+      !userInfo.membershipStatus ? this.showNotAMemberMessage() : this.displayPullRequests(userInfo);
     } catch (error) {
       this.setState({
         error,
@@ -99,21 +99,32 @@ class PullRequests extends Component {
   };
 
   /**
-   * Displays error message.
+   * Displays general error message.
    */
-
   getErrorMessage = () => {
     const { data, error } = this.state;
 
     if (error && error.description) {
-      return error.error_description;
+      return <> error.error_description</>;
     }
 
     if (data && data.errors) {
-      return data.errors.message;
+      return <> data.errors.message</>;
     }
 
-    return "Couldn't find any data or we hit an error, try again?";
+    return <> Couldn't find any data or we hit an error, try again?</>;
+  };
+
+  /**
+   * Displays Error if User is not a member of organization.
+   */
+  getNotAMemberMessage = () => {
+    return (
+      <>
+        You are not a member of Leapfrog Technology. You can join us from{' '}
+        <a href={ORG_INFO.ORG_REDIRECT_URL}> here </a> :).
+      </>
+    );
   };
 
   /**
@@ -157,6 +168,8 @@ class PullRequests extends Component {
   }
 
   /**
+   * Change state to list PRs.
+   * 
    * @param {*} userInfo
    */
   displayPullRequests = userInfo => {
@@ -168,7 +181,8 @@ class PullRequests extends Component {
       userDetail,
       loading: false,
       otherReposCount: count,
-      error: null
+      error: null,
+      isOrgMember: true
     });
   };
 
@@ -192,25 +206,12 @@ class PullRequests extends Component {
   /**
    * Pops up NotAMember modal for non leapfroggers.
    */
-  showNotAMemberModal = () => {
+  showNotAMemberMessage = () => {
     this.setState({
-      openModal: true,
+      isOrgMember: false,
       loading: false,
       data: null,
       userDetail: null
-    });
-  };
-
-  /**
-   * Closes modal by setting openModal flag false.
-   */
-  closeNotAMemberModal = () => {
-    this.setState({
-      error: true,
-      loading: false,
-      data: null,
-      userDetail: null,
-      openModal: false
     });
   };
 
@@ -224,8 +225,8 @@ class PullRequests extends Component {
     if (loading) {
       return <LoadingIcon />;
     }
-    if (this.state.openModal) {
-      return <NotAMember close={this.closeNotAMemberModal} />;
+    if (!this.state.isOrgMember) {
+      return <ErrorText errorMessage={this.getNotAMemberMessage()} />;
     }
     if (error || data.errors || data.message) {
       return <ErrorText errorMessage={this.getErrorMessage()} />;
