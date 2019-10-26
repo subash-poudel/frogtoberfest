@@ -9,10 +9,21 @@ import PullRequests from './components/PullRequests';
  * User Component.
  */
 export class User extends Component {
-  state = {
-    totalPrCount: 0,
-    totalOtherPrCount: 0
-  };
+  /**
+   * User component constructor to set initial state.
+   *
+   * @param {*} props
+   */
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      totalPrCount: 0,
+      totalOtherPrCount: 0
+    };
+
+    this.setUserContributionCount = this.setUserContributionCount.bind(this);
+  }
 
   /**
    * Set user contribution count of pull requests and other pull request count.

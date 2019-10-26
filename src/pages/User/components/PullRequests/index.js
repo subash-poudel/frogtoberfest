@@ -180,13 +180,16 @@ class PullRequests extends Component {
    */
   displayPullRequests = userInfo => {
     const { data, userDetail } = userInfo;
-    const count = this.countOtherRepos(data, userDetail);
+    const validData = this.getValidPullRequests(data);
+    const otherReposCount = this.countOtherRepos(validData, userDetail);
+
+    this.props.setUserContributionCount(validData.items.length, otherReposCount);
 
     this.setState({
-      data: this.getValidPullRequests(data),
+      data: validData,
       userDetail,
       loading: false,
-      otherReposCount: count,
+      otherReposCount,
       error: null,
       isOrgMember: true
     });
