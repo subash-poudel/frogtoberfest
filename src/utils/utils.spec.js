@@ -1,7 +1,7 @@
 import { formatDate } from './utils';
 
 describe('formatDate', () => {
-  const expectedDateString = "Sat Oct 26 2019";
+  const expectedDateString = 'Sat Oct 26 2019';
 
   it('should return formatted date for given date in "dd-mmm-yyyy hh:mm" format.', () => {
     const date = '26-OCT-2019 13:48';
