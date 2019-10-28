@@ -52,7 +52,7 @@ export class User extends Component {
           totalPrCount={this.state.totalPrCount}
           totalOtherPrCount={this.state.totalOtherPrCount}
         />
-        <PullRequests username={username} setUserContributionCount={this.setUserContributionCount} />
+        <PullRequests username={username} setUserContributionCount={this.setUserContributionCount.bind(this)} />
       </Fragment>
     );
   }
