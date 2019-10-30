@@ -125,7 +125,7 @@ class PullRequests extends Component {
     return (
       <>
         You are not a member of Leapfrog Technology. However, you can join our{' '}
-        <a href={LF_CAREER_URL} target="blank ">
+        <a href={LF_CAREER_URL} target="_blank">
           awesome team
         </a>
         . 😉
