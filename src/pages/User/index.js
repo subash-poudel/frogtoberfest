@@ -21,7 +21,7 @@ export class User extends Component {
    * @param {*} totalOtherPrCount
    */
   setUserContributionCount = (totalPrCount, totalOtherPrCount) => {
-    if (totalPrCount && totalOtherPrCount) {
+    if ((totalPrCount || totalPrCount === 0) && (totalOtherPrCount || totalOtherPrCount === 0)) {
       this.setState({
         totalPrCount,
         totalOtherPrCount

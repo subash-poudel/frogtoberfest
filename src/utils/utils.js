@@ -29,3 +29,20 @@ export function fetchInfoFromGitHub(url, githubToken) {
 
   return response;
 }
+
+/**
+ * Returns previous year if month is less than october else gets current year.
+ *
+ * @returns {number}
+ */
+export function getQueryYear() {
+  const today = new Date();
+  const currentMonth = today.getMonth();
+  let queryYear = today.getFullYear();
+
+  if (currentMonth < 9) {
+    queryYear -= 1;
+  }
+
+  return queryYear;
+}

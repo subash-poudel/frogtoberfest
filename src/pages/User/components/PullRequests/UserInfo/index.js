@@ -49,4 +49,9 @@ UserInfo.propTypes = {
   otherReposCount: PropTypes.number.isRequired
 };
 
+UserInfo.defaultProps = {
+  pullRequestCount: 0,
+  otherReposCount: 0
+};
+
 export default UserInfo;
