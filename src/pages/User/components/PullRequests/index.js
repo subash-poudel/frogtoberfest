@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
+
 import ShareButtons from './ShareButtons';
 import LoadingIcon from './LoadingIcon';
 import PullRequest from './PullRequest';
@@ -7,8 +8,8 @@ import IssuesLink from './IssuesLink';
 import MeLinkInfo from './MeLinkInfo';
 import ErrorText from './ErrorText';
 import UserInfo from './UserInfo';
-import { fetchInfoFromGitHub, getApiUrls } from '../../../../services/index';
-import { GITHUB_TOKEN, TOTAL_PR_COUNT, TOTAL_OTHER_PR_COUNT, LF_CAREER_URL } from '../../../../config';
+import { fetchInfoFromGitHub, getApiUrls } from 'services/index';
+import { GITHUB_TOKEN, TOTAL_PR_COUNT, TOTAL_OTHER_PR_COUNT, LF_CAREER_URL } from 'config';
 
 /**
  * Returns an object containing user info.

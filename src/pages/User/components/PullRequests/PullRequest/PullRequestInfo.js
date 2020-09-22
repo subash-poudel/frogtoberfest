@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { formatDate } from '../../../../../utils/date';
+
+import { formatDate } from 'utils/date';
 
 const PullRequestInfo = ({ pullRequest }) => (
   <div>

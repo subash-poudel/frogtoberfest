@@ -1,4 +1,4 @@
-import { TOTAL_PR_COUNT, TOTAL_OTHER_PR_COUNT } from '../../../../../../config';
+import { TOTAL_PR_COUNT, TOTAL_OTHER_PR_COUNT } from 'config';
 
 const messages = [
   "It's not too late to start!",

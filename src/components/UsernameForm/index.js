@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import withRouter from 'react-router-dom/withRouter';
 import PropTypes from 'prop-types';
 
-import { TOTAL_PR_COUNT, TOTAL_OTHER_PR_COUNT } from '../../config';
+import { TOTAL_PR_COUNT, TOTAL_OTHER_PR_COUNT } from 'config';
 import CompletionMessage from './CompletionMessage';
 import UsernameInput from './UsernameInput';
 import TimeMessage from './TimeMessage';

@@ -1,5 +1,5 @@
-import { getYear } from '../utils/date';
-import { GITHUB_ORG_NAME } from '../config';
+import { getYear } from 'utils/date';
+import { GITHUB_ORG_NAME } from 'config';
 
 /**
  * Fetch and return responses from Github apis.

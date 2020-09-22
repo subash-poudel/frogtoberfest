@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { HOSTNAME, TOTAL_PR_COUNT } from '../../../../config';
+import { HOSTNAME, TOTAL_PR_COUNT } from 'config';
 
 const ShareButtons = ({ username, pullRequestCount }) => (
   <div className="pb-8 flex justify-center">

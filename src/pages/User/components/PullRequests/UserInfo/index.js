@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { TOTAL_PR_COUNT, TOTAL_OTHER_PR_COUNT } from '../../../../../config';
+import { TOTAL_PR_COUNT, TOTAL_OTHER_PR_COUNT } from 'config';
 import PullRequestCount from './PullRequestCount';
 import ResultMessage from './ResultMessage';
 import UserImage from './UserImage';

@@ -1,5 +1,5 @@
 import React from 'react';
-import { getYear } from '../../utils/date';
+import { getYear } from 'utils/date';
 
 const CompletionMessage = () => {
   return (
