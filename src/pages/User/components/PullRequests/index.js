@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
+
 import ShareButtons from './ShareButtons';
 import LoadingIcon from './LoadingIcon';
 import PullRequest from './PullRequest';
@@ -7,8 +8,8 @@ import IssuesLink from './IssuesLink';
 import MeLinkInfo from './MeLinkInfo';
 import ErrorText from './ErrorText';
 import UserInfo from './UserInfo';
-import { fetchInfoFromGitHub } from '../../../../utils/utils';
-import { GITHUB_TOKEN, TOTAL_PR_COUNT, TOTAL_OTHER_PR_COUNT, GITHUB_ORG_NAME, LF_CAREER_URL } from '../../../../config';
+import { fetchInfoFromGitHub, getApiUrls } from 'services/index';
+import { GITHUB_TOKEN, TOTAL_PR_COUNT, TOTAL_OTHER_PR_COUNT, LF_CAREER_URL } from 'config';
 
 /**
  * Returns an object containing user info.
@@ -17,11 +18,8 @@ import { GITHUB_TOKEN, TOTAL_PR_COUNT, TOTAL_OTHER_PR_COUNT, GITHUB_ORG_NAME, LF
  * @returns {*}
  */
 export async function fetchUserInfo(username) {
-  const apiUrls = [
-    `https://api.github.com/search/issues?q=author:${username}+is:pr+created:2019-10-01..2019-10-31`,
-    `https://api.github.com/search/users?q=user:${username}`,
-    `https://api.github.com/orgs/${GITHUB_ORG_NAME}/members/${username}`
-  ];
+  const apiUrls = getApiUrls(username);
+
   const results = apiUrls.map(url => fetchInfoFromGitHub(url, GITHUB_TOKEN));
   let [data, userDetail, membershipStatus] = await Promise.all(results);
 

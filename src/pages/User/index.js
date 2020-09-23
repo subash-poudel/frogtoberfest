@@ -1,8 +1,8 @@
 import React, { Fragment, Component } from 'react';
 import PropTypes from 'prop-types';
 import { Helmet } from 'react-helmet';
-import SiteTitle from '../../components/SiteTitle';
-import UsernameForm from '../../components/UsernameForm';
+import SiteTitle from 'components/SiteTitle';
+import UsernameForm from 'components/UsernameForm';
 import PullRequests from './components/PullRequests';
 
 /**
@@ -21,7 +21,7 @@ export class User extends Component {
    * @param {*} totalOtherPrCount
    */
   setUserContributionCount = (totalPrCount, totalOtherPrCount) => {
-    if (totalPrCount && totalOtherPrCount) {
+    if ((totalPrCount || totalPrCount === 0) && (totalOtherPrCount || totalOtherPrCount === 0)) {
       this.setState({
         totalPrCount,
         totalOtherPrCount

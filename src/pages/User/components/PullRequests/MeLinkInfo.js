@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { HOSTNAME } from '../../../../config';
+import { HOSTNAME } from 'config';
 
 /**
  * "Me" link info component.

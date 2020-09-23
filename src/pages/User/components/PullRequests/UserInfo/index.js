@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { TOTAL_PR_COUNT, TOTAL_OTHER_PR_COUNT } from '../../../../../config';
+import { TOTAL_PR_COUNT, TOTAL_OTHER_PR_COUNT } from 'config';
 import PullRequestCount from './PullRequestCount';
 import ResultMessage from './ResultMessage';
 import UserImage from './UserImage';
@@ -47,6 +47,11 @@ UserInfo.propTypes = {
   userImage: PropTypes.string.isRequired,
   pullRequestCount: PropTypes.number.isRequired,
   otherReposCount: PropTypes.number.isRequired
+};
+
+UserInfo.defaultProps = {
+  pullRequestCount: 0,
+  otherReposCount: 0
 };
 
 export default UserInfo;
