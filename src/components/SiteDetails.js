@@ -1,10 +1,10 @@
 import React from 'react';
 
 const checklistItems = [
-  'Create 10 pull requests (PRs) between Oct 1-31.',
+  'Create 6 pull requests (PRs) between Oct 1-31.',
+  'At least 4 PRs should be in repositories not owned by you.',
   'PRs can be made to any public repository on GitHub.',
-  'PRs should not be labeled as `invalid`.',
-  'At least 4 PRs should be in repositories not owned by you.'
+  'PRs should not be labeled as `invalid`.'
 ];
 
 /**
@@ -16,7 +16,7 @@ const SiteDetails = () => (
       <div className="px-6 py-4">
         <div className="font-bold mb-4">
           <p className="mb-4 leading-normal text-lg mb-1">
-            Frogtoberfest, inspired from Hacktoberfest is a month-long open source contribution challenge for
+            Frogtoberfest is a spin-off of Hacktoberfest; a month-long Open Source contribution challenge for
             Leapfroggers.
           </p>
         </div>

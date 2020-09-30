@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { HOSTNAME, TOTAL_PR_COUNT } from 'config';
 
 const ShareButtons = ({ username, pullRequestCount }) => (
-  <div className="pb-8 flex justify-center">
+  <div className="pb-4 flex justify-center">
     <div className="p-2" id="twitter-share">
       <a
         target="_blank"

@@ -4,7 +4,7 @@ const getTimeMessage = () => {
   const daysLeft = 31 - today.getDate();
 
   if (currentMonth !== 9) {
-    return "It isn't even October yet!";
+    return "It's not even October yet!";
   }
 
   if (daysLeft === 0) {
