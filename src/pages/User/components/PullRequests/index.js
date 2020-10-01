@@ -10,6 +10,7 @@ import ErrorText from './ErrorText';
 import UserInfo from './UserInfo';
 import { fetchInfoFromGitHub, getApiUrls } from 'services/index';
 import { GITHUB_TOKEN, TOTAL_PR_COUNT, TOTAL_OTHER_PR_COUNT, LF_CAREER_URL } from 'config';
+import MotivationalMessage from './UserInfo/MotivationalMessage/index';
 
 /**
  * Returns an object containing user info.
@@ -245,6 +246,9 @@ class PullRequests extends Component {
       <Fragment>
         <div className="text-center text-white">
           <ShareButtons username={username} pullRequestCount={data.items.length} />
+          <div className="flex flex-wrap justify-center content-center flex-col pb-4">
+            <MotivationalMessage pullRequestCount={data.items.length} otherReposCount={this.state.otherReposCount} />
+          </div>
           <UserInfo
             username={username}
             userImage={userDetail.items[0].avatar_url}

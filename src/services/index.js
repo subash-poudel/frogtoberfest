@@ -30,7 +30,7 @@ export function getApiUrls(username) {
   const queryYear = getYear();
 
   return [
-    `https://api.github.com/search/issues?q=author:${username}+is:pr+created:${queryYear}-10-01..${queryYear}-10-30`,
+    `https://api.github.com/search/issues?q=author:${username}+is:pr+created:${queryYear}-09-30T18:15:00..${queryYear}-10-31T18:15:00`,
     `https://api.github.com/search/users?q=user:${username}`,
     `https://api.github.com/orgs/${GITHUB_ORG_NAME}/members/${username}`
   ];
