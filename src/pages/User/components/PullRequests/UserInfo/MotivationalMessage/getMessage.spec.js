@@ -14,7 +14,7 @@ describe('getMessage', () => {
   it('should throw error with message Parameters pullRequestCount and otherReposCount should are not integers. for invalid inputs', () => {
     const expectedErrorMessage = 'Parameters pullRequestCount and otherReposCount should are not integers.';
 
-    expect(() => getMessage(null, null)).toThrowError('expectedErrorMessage');
+    expect(() => getMessage(null, null)).toThrowError(expectedErrorMessage);
     expect(() => getMessage(-1, -1)).toThrowError(expectedErrorMessage);
   });
 
