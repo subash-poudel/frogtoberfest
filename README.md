@@ -4,7 +4,7 @@
 
 ## CI Status
 
-[![CircleCI](https://circleci.com/gh/leapfrogtechnology/frogtoberfest/tree/master.svg?style=svg)](https://circleci.com/gh/leapfrogtechnology/frogtoberfest/tree/master)
+[![frogtoberfest Actions Status](https://github.com/subash-poudel/frogtoberfest/workflows/master/badge.svg)](https://github.com/subash-poudel/frogtoberfest/actions)
 
 ## Requirements
 
