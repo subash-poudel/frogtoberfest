@@ -19,13 +19,13 @@ const MONTH_OCTOBER = 9;
 /**
  * Get motivational message based on pull requests count.
  *
- * @param {integer} pullRequestCount
- * @param {integer} otherReposCount
+ * @param {number} pullRequestCount
+ * @param {number} otherReposCount
  * @returns {string}
  */
 function getMessage(pullRequestCount = 0, otherReposCount = 0) {
   if (!Number.isInteger(pullRequestCount) || !Number.isInteger(otherReposCount) || pullRequestCount < 0) {
-    return messages[0];
+    throw new Error('Parameters pullRequestCount and otherReposCount should are not integers.');
   }
 
   const currentMonth = new Date().getMonth();

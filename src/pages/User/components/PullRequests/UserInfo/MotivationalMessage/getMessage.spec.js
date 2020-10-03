@@ -5,20 +5,17 @@ describe('getMessage', () => {
   /* Initialize the required date objects before mocking them globally
      just makes writing the test cases a bit easier 
   */
-  const mockedDate = new Date(2020, 12, 1);
   const mockDateOctober = new Date(2020, 9, 15);
   const mockDateBeforeOctober = new Date(2020, 8, 1);
   const mockDateAfterOctober = new Date(2020, 11, 1);
 
   const spy = jest.spyOn(global, 'Date');
 
-  it("should return message It's not too late to start! for invalid inputs", () => {
-    const expectedMessage = "It's not too late to start!";
+  it('should throw error with message Parameters pullRequestCount and otherReposCount should are not integers. for invalid inputs', () => {
+    const expectedErrorMessage = 'Parameters pullRequestCount and otherReposCount should are not integers.';
 
-    spy.mockImplementation(() => mockedDate);
-
-    expect(getMessage(null, null)).toEqual(expectedMessage);
-    expect(getMessage(-1, -1)).toEqual(expectedMessage);
+    expect(() => getMessage(null, null)).toThrowError(expectedErrorMessage);
+    expect(() => getMessage(-1, -1)).toThrowError(expectedErrorMessage);
   });
 
   it("should return message Last year's result. for the month before october with valid inputs.", () => {
