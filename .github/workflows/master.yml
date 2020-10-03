@@ -27,4 +27,9 @@ jobs:
       - run: yarn test
       - run: yarn lint
       - run: yarn build
-      - run: git heroku push master
+      - name: Deploy to heroku
+        uses: akhileshns/heroku-deploy@v3.5.7
+        with:
+          heroku_api_key: ${{secrets.HEROKU_API_KEY}}
+          heroku_app_name: ${{secrets.HEROKU_APP_NAME}}
+          heroku_email: ${{secrets.MY_EMAIL}}
