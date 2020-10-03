@@ -22,15 +22,15 @@
     "lint": "yarn prettier && yarn eslint",
     "lint:fix": "yarn prettier:fix && yarn eslint:fix",
     "prettier": "prettier \"{src,api}/**/*.js\"",
-    "prettier:fix": "prettier --write \"{src,api}/**/*.js\"",
-    "react-scripts": "^3.2.0"
+    "prettier:fix": "prettier --write \"{src,api}/**/*.js\""
   },
   "dependencies": {
     "prop-types": "^15.6.2",
     "react": "^16.10.2",
     "react-dom": "^16.10.2",
     "react-helmet": "^5.2.0",
-    "react-router-dom": "^5.1.2"
+    "react-router-dom": "^5.1.2",
+    "react-scripts": "^3.2.0"
   },
   "devDependencies": {
     "babel-eslint": "10.0.3",
