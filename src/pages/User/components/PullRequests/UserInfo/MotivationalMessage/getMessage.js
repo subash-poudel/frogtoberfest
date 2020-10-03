@@ -1,6 +1,6 @@
 import { TOTAL_PR_COUNT, TOTAL_OTHER_PR_COUNT } from 'config';
 
-const messages = [
+export const messages = [
   "It's not too late to start!",
   'Off to a great start, keep going!',
   'Keep going!',
@@ -14,21 +14,27 @@ const messages = [
   "Now you're just showing off!"
 ];
 
+const MONTH_OCTOBER = 9;
+
 /**
  * Get motivational message based on pull requests count.
  *
- * @param {*} pullRequestCount
- * @param {*} otherReposCount
+ * @param {number} pullRequestCount
+ * @param {number} otherReposCount
  * @returns {string}
  */
-function getMessage(pullRequestCount, otherReposCount) {
+function getMessage(pullRequestCount = 0, otherReposCount = 0) {
+  if (!Number.isInteger(pullRequestCount) || !Number.isInteger(otherReposCount) || pullRequestCount < 0) {
+    throw new Error('Parameters pullRequestCount and otherReposCount should are not integers.');
+  }
+
   const currentMonth = new Date().getMonth();
 
-  if (currentMonth < 9) {
+  if (currentMonth < MONTH_OCTOBER) {
     return "Last year's result.";
   }
 
-  if (currentMonth > 9) {
+  if (currentMonth > MONTH_OCTOBER) {
     return "This year's result.";
   }
 
