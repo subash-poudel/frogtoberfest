@@ -12,7 +12,7 @@ const SiteTitle = () => (
           src="https://github.com/leapfrogtechnology/opensource/raw/master/assets/leapfrog-opensource-logo.png"
         />
       </div>
-      <div className="text-grey-dark tracking-wide text-xs mb-4">PRESENTS</div>
+      <div className="text-grey-dark tracking-wide text-xs mb-4">PRESENTS Testing</div>
       <a className="block cursor-pointer no-underline" href={HOSTNAME} title="Frogtoberfest">
         <img alt="Frogtoberfest Artwork" src={frogtoberfestLogo} />
       </a>
