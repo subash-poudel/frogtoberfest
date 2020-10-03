@@ -53,9 +53,10 @@ describe('getMessage', () => {
   it('should return message from messages array for if the user is not showing off', () => {
     spy.mockImplementation(() => mockDateOctober);
 
-    for (let i = 0; i < messages.length - 1; i++) {
-      expect(getMessage(i, 0)).toEqual(messages[i]);
-    }
+    const prCounts = messages.slice(0, messages.length - 1).map((_, i) => i);
+    const results = prCounts.map(prCount => getMessage(prCount, 0));
+
+    expect(results).toEqual(messages.slice(0, messages.length - 1));
   });
 
   afterEach(() => {
