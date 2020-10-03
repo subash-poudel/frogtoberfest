@@ -6,7 +6,7 @@ import UsernameForm from 'components/UsernameForm';
 
 const Home = () => (
   <Fragment>
-    <SiteTitle>Frogtoberfest Checker Testing 1</SiteTitle>
+    <SiteTitle>Frogtoberfest Checker Testing 2</SiteTitle>
     <UsernameForm />
     <SiteDetails />
   </Fragment>
