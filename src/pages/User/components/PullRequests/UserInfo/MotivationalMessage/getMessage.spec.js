@@ -11,8 +11,8 @@ describe('getMessage', () => {
 
   const spy = jest.spyOn(global, 'Date');
 
-  it('should throw error with message Parameters pullRequestCount and otherReposCount should are not integers. for invalid inputs', () => {
-    const expectedErrorMessage = 'Parameters pullRequestCount and otherReposCount should are not integers.';
+  it('should throw error with message Parameters pullRequestCount and otherReposCount should be integers.. for invalid inputs', () => {
+    const expectedErrorMessage = 'Parameters pullRequestCount and otherReposCount should be integers.';
 
     expect(() => getMessage(null, null)).toThrowError(expectedErrorMessage);
     expect(() => getMessage(-1, -1)).toThrowError(expectedErrorMessage);

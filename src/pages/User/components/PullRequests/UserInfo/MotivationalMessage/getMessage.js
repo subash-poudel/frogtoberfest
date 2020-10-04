@@ -23,9 +23,9 @@ const MONTH_OCTOBER = 9;
  * @param {number} otherReposCount
  * @returns {string}
  */
-function getMessage(pullRequestCount = 0, otherReposCount = 0) {
+function getMessage(pullRequestCount, otherReposCount) {
   if (!Number.isInteger(pullRequestCount) || !Number.isInteger(otherReposCount) || pullRequestCount < 0) {
-    throw new Error('Parameters pullRequestCount and otherReposCount should are not integers.');
+    throw new Error('Parameters pullRequestCount and otherReposCount should be integers.');
   }
 
   const currentMonth = new Date().getMonth();
