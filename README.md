@@ -4,7 +4,7 @@
 
 ## CI Status
 
-[![frogtoberfest Actions Status](https://github.com/leapfrogtechnology/frogtoberfest/workflows/master/badge.svg)](https://github.com/subash-poudel/frogtoberfest/actions)
+[![frogtoberfest Actions Status](https://github.com/leapfrogtechnology/frogtoberfest/workflows/master/badge.svg)](https://github.com/leapfrogtechnology/frogtoberfest/actions)
 
 ## Requirements
 
